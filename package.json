@@ -1,19 +1,13 @@
 {
   "name": "boily",
   "description": "Boilerplate for creating libraries with rollup",
-  "version": "1.2.1",
+  "version": "1.2.5",
   "license": "MIT",
 
   "author": {
     "name": "KFlash",
     "email": "kflash123@gmail.com"
   },
-  "contributors": [
-    {
-      "name": "Jon Doe",
-      "web": "https://github.com/xxx"
-    }
-  ],
   "bugs": {
     "url": "https://github.com/kflash/boily/issues"
   },
@@ -33,7 +27,7 @@
     "karma-coverage": "^0.5.3",
     "karma-coveralls": "^1.1.2",
     "karma-mocha": "^0.2.2",
-    "karma-mocha-reporter": "^1.1.5",
+    "karma-mocha-reporter": "^1.2.0",
     "karma-sinon-chai": "^1.1.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
@@ -47,12 +41,14 @@
     "rollup-plugin-node-resolve": "^1.4.0",
     "rollup-plugin-replace": "^1.1.0",
     "rollup-plugin-uglify": "^0.2.0",
+    "rollup-plugin-filesize": "^0.2.1",
+    "rollup-plugin-eslint": "^2.0.0",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
     "isparta": "^4.0.0",
     "isparta-loader": "^2.0.0",
     "chai": "^3.5.0",
-    "eslint": "^2.1.0",
+    "eslint": "^2.2.0",
     "webpack": "^2.0.7-beta",
     "webpack-dev-server": "^1.14.1",
     "glob": "^7.0.0",
@@ -65,8 +61,6 @@
     "semver": "^5.1.0",
     "documentation": "^4.0.0-beta"
   },
-  "dependencies": {},
-  "files": ["src"],
   "homepage": "https://github.com/kflash/boily#readme",
   "jsnext:main": "src/index.js",
   "keywords": [
@@ -120,8 +114,7 @@
     "package:prod": "./node_modules/.bin/ncu -u",
     "package:dev": "./node_modules/.bin/ncu -p -u",
     "preversion": "[[ -z $(git status --porcelain) ]] && npm run build && git add -A dist && git commit -m 'Build lib'",
-    "postpublish": "git push origin master --follow-tags",
-    "commit": "git-cz"
+    "postpublish": "git push origin master --follow-tags"
   },
   "pre-commit": [
     "test",
@@ -130,11 +123,5 @@
   "engines": {
     "node": "<6",
     "npm": "~2.5"
-  },
-  "engineStrict": true,
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
-    }
   }
 }
