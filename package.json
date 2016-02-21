@@ -103,7 +103,7 @@
     "lint:tests": "eslint test/specs/",
     "lint:source": "eslint src/",
     "watch:server": "npm run test:server -- --watch",
-    "watch:browser": "./node_modules/.bin/karma start --auto-watch --no-single-run",
+    "watch:browser": "./node_modules/.bin/karma start config/karma.conf.js --auto-watch --no-single-run",
     "packages": "npm list --depth=0",
     "package:purge": "rm -rf node_modules",
     "package:reinstall": "npm run package:purge && npm install",
