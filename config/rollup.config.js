@@ -60,8 +60,7 @@ const plugins = [
 	//} }),
 	filesize(),
 	replace({
-		'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-		exclude: 'node_modules/**',
+		'process.env.NODE_ENV': JSON.stringify('production'),
 		VERSION: pack.version
 	})
 ];
