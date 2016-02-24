@@ -44,6 +44,10 @@ $ npm run build                 # Build a minified and a non-minified version of
 * `npm run test` - Runs unit tests for both server and the browser
 * `npm run test:browser` - Runs the unit tests for browser
 * `npm run test:server` - Runs the unit tests on the server
+* `npm run karma:chrome` - Runs the unit tests for browser with Chrome
+* `npm run karma:phantom` - Runs the unit tests for browser with PhantomJS
+* `npm run karma:ie` - Runs the unit tests for browser with Internet Explorer
+* `npm run karma:firefox` - Runs the unit tests for browser with Firefox
 * `npm run watch:server` - Run all unit tests for server & watch files for changes
 * `npm run watch:browser` - Run all unit tests for browser & watch files for changes
 * `npm run packages` - List installed packages
