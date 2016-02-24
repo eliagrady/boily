@@ -18,8 +18,6 @@
 * Unit tests written with ES2015 get transpiled on the fly
 * [Easier way of commiting your changes](https://github.com/commitizen/cz-cli), with command line tool
 * Browser tests in the browser
-* [SauceLab](https://saucelabs.com/) and [BrowserStack](https://www.browserstack.com/) ready
-* [TestingBot](https://testingbot.com/) ready
 * Node >= 4.2
 
 ## Getting Started
@@ -58,6 +56,7 @@ $ npm run build                 # Build a minified and a non-minified version of
 * `npm run package:dev` - Automaticly upgrade all devDependencies and update package.json
 * `npm run package:prod` - Automaticly upgrade all dependencies and update package.json
 * `npm run browser` - runs browser unit tests in the browser. All of your unit tests get bundled automatically.
+* `npm run commit` - commit latest changes to the Master branch on Github.
 
 ## Testing environment
 
@@ -81,12 +80,6 @@ To keep watching the common test suites that you are working on, simply do `npm 
 ## Browser tests
 
 To run your unit tests in the browser, do `npm run browser`, and open `port 8080`. Hot module replacement (WDS) are supported.
-
-## SauceLab and BrowserStack integration
-
-All major browsers, and their OS are already setup to work right out of the box.
-
-You only need to uncomment what you need inside the `karma.config.js` file, and follow the instructions on how to set this up on either `SauceLab` or `BrowserStack` homepage to get this up and running.
 
 ## Coveralls
 
