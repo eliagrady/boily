@@ -60,11 +60,7 @@
     "pre-commit": "^1.1.2",
     "mkdirp": "^0.5.1",
     "rimraf": "^2.5.2",
-    "npm-check-updates": "^2.5.8",
-    "semver": "~5.1.0",
-    "shelljs": "~0.6.0",
-    "sorted-object": "^1.0.0",
-    "stringmap": "^0.2.2"
+    "npm-check-updates": "^2.5.8"
   },
   "homepage": "https://github.com/kflash/boily#readme",
   "jsnext:main": "src/index.js",
