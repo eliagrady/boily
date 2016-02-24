@@ -47,7 +47,7 @@ install:
   - npm config set spin false
   # Log HTTP requests
   - npm config set loglevel http
-  - npm install -g npm@3.5.2
+  - npm install -g npm@3.7.3
   # Install npm dependencies and ensure that npm cache is not stale
   - npm install
 
