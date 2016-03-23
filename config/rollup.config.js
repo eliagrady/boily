@@ -6,7 +6,6 @@ import nodeResolve from 'rollup-plugin-node-resolve';
 import replace from 'rollup-plugin-replace';
 import uglify from 'rollup-plugin-uglify';
 import filesize from 'rollup-plugin-filesize';
-import eslint from 'rollup-plugin-eslint';
 import pack from '../package.json';
 
 const development = process.argv[2] === 'dev';
@@ -55,9 +54,7 @@ const plugins = [
 		jsnext: true,
 		main: true
 	}),
-	//eslint({ rules: {
-		/* your options */
-	//} }),
+	typescript(),
 	filesize(),
 	replace({
 		'process.env.NODE_ENV': JSON.stringify('production'),

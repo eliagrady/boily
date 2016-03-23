@@ -13,6 +13,7 @@
 * [Webpack](https://webpack.github.io/) for unit tests
 * [Rollup](http://rollupjs.org/) for bundling
 * [Eslint](http://eslint.org/) to maintain a consistent code style
+* [Typescript](https://github.com/rollup/rollup-plugin-typescript) support with Rollup and JSX
 * [Karma](http://karma-runner.github.io/0.13/index.html) as the test runner
 * [Universal Module Definition (UMD) API](https://github.com/umdjs/umd), which provides compatibility with the most popular script loaders, to the output.
 * Unit tests written with ES2015 get transpiled on the fly
