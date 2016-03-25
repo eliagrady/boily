@@ -9,16 +9,6 @@ import filesize from 'rollup-plugin-filesize';
 import pack from '../package.json';
 import typescript from 'rollup-plugin-typescript';
 
-const development = process.argv[2] === 'dev';
-const production = process.argv[2] === 'prod';
-const es6 = process.argv[3] === 'es6';
-
-if (development) {
-	process.env.NODE_ENV = 'development';
-} else {
-	process.env.NODE_ENV = 'production';
-}
-
 /*
  * Banner
  **/
@@ -30,27 +20,24 @@ const copyright =
 	' */'
 
 const entry = p.resolve('src/index.js');
-const dest  = p.resolve(`dist/boily.${production ? 'min.js' : es6 ? 'es6.js' : 'js'}`);
+const dest  = p.resolve(`dist/boily.${process.env.NODE_ENV === 'production' ? 'min.js' : 'js'}`);
 
 const bundleConfig = {
 	dest,
-	format: es6 ? 'es6' : 'umd',
+	format: 'umd',
 	moduleName: 'Boily',
 	globals: {
 		boily: 'Boily'
 	},
 	banner: copyright,
-	sourceMap: false // set to false to generate sourceMap
+	sourceMap: false // set to true to generate sourceMap
 };
 
-const babelConfig = JSON.parse(fs.readFileSync('.babelrc', 'utf8'));
-babelConfig.babelrc = false;
-babelConfig.presets = babelConfig.presets.map((preset) => {
-	return preset === 'es2015' ? 'es2015-rollup' : preset;
-});
-
 const plugins = [
-	babel(babelConfig),
+	babel({
+		babelrc: false,
+		presets: 'es2015-rollup'
+	}),
 	nodeResolve({
 		jsnext: true,
 		main: true
@@ -63,7 +50,7 @@ const plugins = [
 	})
 ];
 
-if (production && !es6) {
+if (process.env.NODE_ENV === 'production') {
 	plugins.push(
 		uglify({
 			warnings: false,
