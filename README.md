@@ -91,7 +91,7 @@ Examples and tests are included.
 
 ### Sinon
 
-[Sinon.JS](http://sinonjs.org/) is also set up for test doubles - see [test/BatClass.common.js](test/BatClass.common.js) for examples of both Sinon and Rewire using ES6 classes.
+[Sinon.JS](http://sinonjs.org/) is also set up for test doubles - see `BatClass.common.js` for examples of both Sinon and Rewire using ES6 classes.
 
 ## Coveralls
 
