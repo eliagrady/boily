@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const glob = require('glob');
+
 // Our testing bundle is made up of our unit tests, which
 // should individually load up pieces of our application.
 // We also include the browser setup file.
@@ -9,7 +10,7 @@ const allFiles = ['./config/browser.js'].concat(testFiles);
 
 module.exports = {
 	watch:true,
-	entry: allFiles,
+	entry: testFiles,
 	output: {
 		filename:  '__spec-build.js',
 	},

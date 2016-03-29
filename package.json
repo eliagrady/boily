@@ -1,7 +1,7 @@
 {
   "name": "boily",
-  "description": "Boilerplate for creating libraries with rollup",
-  "version": "1.9.0",
+  "description": "Boilerplate for creating libraries with rollup and rewire",
+  "version": "2.0.1",
   "license": "MIT",
 
   "author": {
@@ -92,7 +92,7 @@
     "build:dev": "cross-env NODE_ENV=development babel-node config/rollup.config.js",
     "build:prod": "cross-env NODE_ENV=production babel-node config/rollup.config.js",
     "build": "npm run clean && mkdirp dist && npm run build:dev && npm run build:prod",
-    "browser": "webpack-dev-server --quiet --config config/webpack.dev.conf.js --host 0.0.0.0",
+    "browser": "webpack-dev-server --quiet --config config/webpack.dev.conf.js",
     "test:server": "mocha --opts config/mocha.opts",
     "test:browser": "karma start config/karma.conf.js --no-auto-watch",
     "karma:phantom": "karma start config/karma.conf.js --single-run --no-auto-watch --browsers=PhantomJS",

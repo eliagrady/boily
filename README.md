@@ -17,10 +17,11 @@
 * [Typescript](https://github.com/rollup/rollup-plugin-typescript) support with Rollup and JSX
 * [Karma](http://karma-runner.github.io/0.13/index.html) as the test runner
 * [Universal Module Definition (UMD) API](https://github.com/umdjs/umd), which provides compatibility with the most popular script loaders, to the output.
+* [Sinon.JS](http://sinonjs.org/) with examples for test doubles
 * Unit tests written with ES2015 get transpiled on the fly
 * [Easier way of commiting your changes](https://github.com/commitizen/cz-cli), with command line tool
 * Browser tests in the browser
-* Node >= 4.2
+* Node >= 5.x
 
 ## Getting Started
 
@@ -83,10 +84,14 @@ To keep watching the common test suites that you are working on, simply do `npm 
 
 To run your unit tests in the browser, do `npm run browser`, and open `port 8080`. Hot module replacement (WDS) are supported.
 
-## Rewire
+### Rewire
 
-Rewire are supported through the `babel-plugin-rewire plugin`. It is useful for writing tests, specifically to mock the dependencies of the module under test.
+Rewire is supported through the [`babel-plugin-rewire`](https://github.com/speedskater/babel-plugin-rewire) plugin. It is useful for writing tests, specifically to mock the dependencies of the module under test.
 Examples and tests are included.
+
+### Sinon
+
+[Sinon.JS](http://sinonjs.org/) is also set up for test doubles - see [test/BatClass.common.js](test/BatClass.common.js) for examples of both Sinon and Rewire using ES6 classes.
 
 ## Coveralls
 
