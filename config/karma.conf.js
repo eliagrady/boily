@@ -1,4 +1,5 @@
 const path = require('path');
+const webpackConfig = require('./webpack.karma.config');
 
 // Karma configuration
 module.exports = function(config, specificOptions) {
@@ -9,7 +10,12 @@ module.exports = function(config, specificOptions) {
 
 		// frameworks to use
 		// available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-		frameworks: ['mocha', 'sinon-chai'],
+		frameworks: [
+			'sinon-chai',
+			'sinon',
+			'chai',
+			'mocha'
+		],
 
 		// list of files / patterns to load in the browser
 		files: [
@@ -21,31 +27,11 @@ module.exports = function(config, specificOptions) {
 		// preprocess matching files before serving them to the browser
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors: {
-			'../src/**/*__tests__*/**/*spec.server.js': ['webpack'],
-			'../src/**/*__tests__*/**/*spec.browser.js': ['webpack'],
+			'../src/**/*__tests__*/**/*spec.server.js': ['webpack', 'sourcemap'],
+			'../src/**/*__tests__*/**/*spec.browser.js': ['webpack', 'sourcemap'],
 		},
 		webpack: {
-			cache: true,
-			module: {
-				postLoaders: [{
-					test: /\.js?$/,
-					exclude: /(src\/dist|packages|.git|node_modules|__tests__)/,
-					loader: 'isparta',
-					include: path.join(__dirname, '../src'),
-					query: {
-						cacheDirectory: true,
-					}
-				}],
-				loaders: [{
-					test: /\.js$/,
-					exclude: /(src\/dist|.git|node_modules)/,
-					loader: 'babel-loader',
-					query: {
-						cacheDirectory: true,
-						plugins: ['babel-plugin-rewire']
-					}
-				}]
-			}
+			module: webpackConfig.module
 		},
 		webpackMiddleware: {
 			noInfo: true

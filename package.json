@@ -1,7 +1,7 @@
 {
   "name": "boily",
   "description": "Boilerplate for creating libraries with rollup and rewire",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "license": "MIT",
 
   "author": {
@@ -29,9 +29,12 @@
     "karma-coveralls": "^1.1.2",
     "karma-mocha": "^0.2.2",
     "karma-mocha-reporter": "^2.0.0",
+    "karma-sinon": "^1.0.4",
     "karma-sinon-chai": "^1.2.0",
+    "karma-chai": "^0.1.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
+    "karma-spec-reporter": "0.0.25",
     "karma-chrome-launcher": "^0.2.3",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-firefox-launcher": "^0.1.7",
@@ -58,6 +61,7 @@
     "glob": "^7.0.3",
     "pre-commit": "^1.1.2",
     "mkdirp": "^0.5.1",
+    "npmlog": "^2.0.3",
     "rimraf": "^2.5.2",
     "npm-check-updates": "^2.6.1",
     "cross-env": "1.0.7",
@@ -69,6 +73,7 @@
     "boilerplate",
     "es2015",
     "rollup",
+    "rewire",
     "karma",
     "mocha",
     "workflow",

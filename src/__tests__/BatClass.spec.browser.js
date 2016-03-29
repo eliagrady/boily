@@ -45,5 +45,6 @@ describe('BatClass - server and browser tests', () => {
                 expect(bat.myBaz.desc).to.eql('complicated');
             });
         });
+
     });
 });
