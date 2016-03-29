@@ -44,16 +44,6 @@ describe('BatClass - server and browser tests', () => {
                 const bat = new BatClass();
                 expect(bat.myBaz.desc).to.eql('complicated');
             });
-
-            /*it('should be able to replace BazClass via Rewire', () => {
-                BatClass.__Rewire__('BazClass', class {
-                    constructor() {
-                        this.desc = 'simple';
-                    }
-                });
-                const bat = new BatClass();
-                expect(bat.myBaz.desc).to.eql('simple');
-            });*/
         });
     });
 });

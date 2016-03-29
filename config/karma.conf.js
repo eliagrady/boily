@@ -42,6 +42,7 @@ module.exports = function(config, specificOptions) {
 					loader: 'babel-loader',
 					query: {
 						cacheDirectory: true,
+						plugins: ['babel-plugin-rewire']
 					}
 				}]
 			}
