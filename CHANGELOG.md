@@ -1,3 +1,9 @@
+# v.2.0.4
+
+- added support for Flow comments. Both parsing and transformation.
+- added support for JSX. Only syntax parsing.
+- a few bug fixes
+
 # v.2.0.1
 
 - supports stubs, spy, sandbox etc for browser testing (*port 8080*)

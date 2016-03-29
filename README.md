@@ -15,6 +15,7 @@
 * [Rollup](http://rollupjs.org/) for bundling
 * [Eslint](http://eslint.org/) to maintain a consistent code style
 * [Typescript](https://github.com/rollup/rollup-plugin-typescript) support with Rollup and JSX
+* [Flow](http://flowtype.org/) for quickly find errors in JavaScript applications
 * [Karma](http://karma-runner.github.io/0.13/index.html) as the test runner
 * [Universal Module Definition (UMD) API](https://github.com/umdjs/umd), which provides compatibility with the most popular script loaders, to the output.
 * [Sinon.JS](http://sinonjs.org/) with examples for test doubles
@@ -83,6 +84,14 @@ To keep watching the common test suites that you are working on, simply do `npm 
 ## Browser tests
 
 To run your unit tests in the browser, do `npm run browser`, and open `port 8080`. Hot module replacement (WDS) are supported.
+
+### JSX
+
+Only syntax parsing are supported. If you want to transform JSX you need to add a JSX transformer plugins for it. E.g `babel-plugin-transform-react-jsx` for React support.
+
+### Flow
+
+Both parsing and transformation of Flow comments are supported by this boilerplate.
 
 ### Rewire
 

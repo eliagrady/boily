@@ -20,7 +20,11 @@ module.exports = {
 			exclude: /node_modules/,
 			loaders: 'babel-loader',
 			query: {
-				plugins: ['babel-plugin-rewire']
+				plugins: [
+					'transform-object-rest-spread',
+					'transform-flow-strip-types',
+					'syntax-flow',
+					'babel-plugin-rewire']
 			}
 
 		}]

@@ -36,7 +36,8 @@ const bundleConfig = {
 const plugins = [
 	babel({
 		babelrc: false,
-		presets: 'es2015-rollup'
+		presets: 'es2015-rollup',
+		plugins: ["transform-flow-strip-types"]
 	}),
 	nodeResolve({
 		jsnext: true,

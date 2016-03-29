@@ -1,4 +1,1 @@
-export default {
-
-	foo: 123
-};
+export default { foo: 123 };
