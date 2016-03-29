@@ -11,6 +11,7 @@
 
 * [ES6 with Babel](http://babeljs.io/) for ES6 and ES7
 * [Webpack](https://webpack.github.io/) for unit tests
+* [Rewire](https://github.com/speedskater/babel-plugin-rewire) enables options to mock modules for testing purposes.
 * [Rollup](http://rollupjs.org/) for bundling
 * [Eslint](http://eslint.org/) to maintain a consistent code style
 * [Typescript](https://github.com/rollup/rollup-plugin-typescript) support with Rollup and JSX
@@ -81,6 +82,11 @@ To keep watching the common test suites that you are working on, simply do `npm 
 ## Browser tests
 
 To run your unit tests in the browser, do `npm run browser`, and open `port 8080`. Hot module replacement (WDS) are supported.
+
+## Rewire
+
+Rewire are supported through the `babel-plugin-rewire plugin`. It is useful for writing tests, specifically to mock the dependencies of the module under test.
+Examples and tests are included.
 
 ## Coveralls
 
