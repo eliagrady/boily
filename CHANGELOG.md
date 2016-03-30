@@ -1,3 +1,8 @@
+# v.2.0.7
+
+- Added support for Promise testing with Chai
+- Added option for stubbing modules during tests with Rollup
+
 # v.2.0.6
 
 - Fixed rewire issues

@@ -14,6 +14,7 @@
 * [Rewire](https://github.com/speedskater/babel-plugin-rewire) enables options to mock modules for testing purposes.
 * [Rollup](http://rollupjs.org/) for bundling
 * [Stub](https://github.com/eventualbuddha/rollup-plugin-stub) let you stub module exports at runtime when bundling with Rollup.
+* [Chai as Promised](https://github.com/domenic/chai-as-promised) extends Chai with a fluent language for asserting facts about promises.
 * [Eslint](http://eslint.org/) to maintain a consistent code style
 * [Typescript](https://github.com/rollup/rollup-plugin-typescript) support with Rollup and JSX
 * [Flow](http://flowtype.org/) for quickly find errors in JavaScript applications
