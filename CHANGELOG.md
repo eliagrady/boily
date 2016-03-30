@@ -1,3 +1,8 @@
+# v.2.0.8
+
+- improved the eslinnt configuration
+- minor bug fixes
+
 # v.2.0.7
 
 - Added support for Promise testing with Chai
