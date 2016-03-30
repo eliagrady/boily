@@ -1,3 +1,7 @@
+# v.2.0.10
+
+- fixed issue where older nodeJS are not supported anymore
+
 # v.2.0.9
 
 - Fixed issue where coverage reported wrong line numbes
