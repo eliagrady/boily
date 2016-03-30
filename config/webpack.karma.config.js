@@ -15,19 +15,27 @@ module.exports = {
 			include: path.resolve('src/'),
 			loader: 'isparta',
 		}],
-		loaders: [{
-			test: /\.js$/,
-			exclude: /node_modules/,
-			loaders: 'babel-loader',
-			query: {
-				plugins: [
-					'transform-object-rest-spread',
-					'transform-flow-strip-types',
-					'syntax-flow',
-					'babel-plugin-rewire']
+		loaders: [
+			// This is what allows us to author in future JavaScript
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				loader: 'babel-loader',
+				query: {
+					plugins: [
+						'transform-object-rest-spread',
+						'transform-flow-strip-types',
+						'syntax-flow',
+						'babel-plugin-rewire']
+				}
+			},
+			// This allows the test setup scripts to load `package.json`
+			{
+				test: /\.json$/,
+				exclude: /node_modules/,
+				loader: 'json-loader'
 			}
-
-		}]
+		]
 	},
 	resolve: {
 		extensions: ['', '.js']

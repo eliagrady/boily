@@ -1,3 +1,7 @@
+# v.2.0.6
+
+- Fixed rewire issues
+
 # v.2.0.4
 
 - added support for Flow comments. Both parsing and transformation.
