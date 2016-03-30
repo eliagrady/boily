@@ -8,6 +8,7 @@ import uglify from 'rollup-plugin-uglify';
 import filesize from 'rollup-plugin-filesize';
 import pack from '../package.json';
 import typescript from 'rollup-plugin-typescript';
+import stub from 'rollup-plugin-stub';
 
 /*
  * Banner
@@ -43,6 +44,7 @@ const plugins = [
 		jsnext: true,
 		main: true
 	}),
+	stub(),
 	typescript(),
 	filesize(),
 	replace({
