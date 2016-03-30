@@ -14,6 +14,9 @@ module.exports = {
 			exclude: /(src\/dist|packages|.git|node_modules|__tests__)/,
 			include: path.resolve('src/'),
 			loader: 'isparta',
+			query: {
+				cacheDirectory: true,
+			}
 		}],
 		loaders: [
 			// This is what allows us to author in future JavaScript
@@ -22,11 +25,7 @@ module.exports = {
 				exclude: /node_modules/,
 				loader: 'babel-loader',
 				query: {
-					plugins: [
-						'transform-object-rest-spread',
-						'transform-flow-strip-types',
-						'syntax-flow',
-						'babel-plugin-rewire']
+					cacheDirectory: true,
 				}
 			},
 			// This allows the test setup scripts to load `package.json`

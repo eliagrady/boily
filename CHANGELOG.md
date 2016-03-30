@@ -1,3 +1,7 @@
+# v.2.0.9
+
+- Fixed issue where coverage reported wrong line numbes
+
 # v.2.0.8
 
 - improved the eslinnt configuration
