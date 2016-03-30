@@ -1,5 +1,5 @@
 /*!
- * boily v1.8.5
+ * boily v2.0.4
  * (c) 2016 KFlash
  * Released under the MIT License.
  */
@@ -9,13 +9,15 @@
 	(global.Boily = factory());
 }(this, function () { 'use strict';
 
-	var boily = {
+	var boily = { foo: 123 };
 
-		foo: 123
-	};
+	// Example on using Flow
+	function flow(one, two, three) {}
 
 	// Correct version will be set with the 'rollup-replace plugin'
-	boily.version = '1.8.5';
+	boily.version = '2.0.4';
+
+	boily.flow = flow;
 
 	return boily;
 

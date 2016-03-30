@@ -1,7 +1,7 @@
 {
   "name": "boily",
   "description": "Boilerplate for creating libraries with rollup and rewire",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "license": "MIT",
 
   "author": {
@@ -24,6 +24,7 @@
     "babel-preset-es2015-rollup": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0-1",
     "babel-plugin-syntax-jsx": "^6.5.0-1",
+	"babel-plugin-syntax-flow": "^6.5.0",
     "babel-plugin-transform-flow-strip-types": "^6.7.0",
     "karma": "0.13.22",
     "karma-coverage": "^0.5.5",
