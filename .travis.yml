@@ -19,16 +19,6 @@ matrix:
   include:
       env:
 
-
-#if [ "$BROWSER_PROVIDER" == "browserstack" ]; then
-#  echo "Using BrowserStack"
-#elif [ "$BROWSER_PROVIDER" == "saucelabs" ]; then
-#  echo "Using SauceLabs"
-#else
-#  echo "Invalid BROWSER_PROVIDER. Please set env var BROWSER_PROVIDER to 'saucelabs' or 'browserstack'."
-#  exit 1
-#fi
-
 before_install:
   - "nvm use $TRAVIS_NODE_VERSION"
   - export CHROME_BIN=/usr/bin/google-chrome
@@ -45,7 +35,7 @@ install:
   - npm config set spin false
   # Log HTTP requests
   - npm config set loglevel http
-  - npm install -g npm@3.7.3
+  - npm install -g npm@3.8.3
   # Install npm dependencies and ensure that npm cache is not stale
   - npm install
 
