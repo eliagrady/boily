@@ -13,6 +13,7 @@ module.exports = function(config, specificOptions) {
 		frameworks: [
 			'sinon-chai',
 			'sinon',
+			'chai-as-promised',
 			'chai',
 			'mocha'
 		],
@@ -20,7 +21,7 @@ module.exports = function(config, specificOptions) {
 		// list of files / patterns to load in the browser
 		files: [
 			'../src/**/*__tests__*/**/*spec.browser.js',
-			'../src/**/*__tests__*/**/*spec.server.js',
+			'../src/**/*__tests__*/**/*spec.server.js'
 		],
 		// list of files to exclude
 		exclude: [],
