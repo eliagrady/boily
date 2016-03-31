@@ -1,4 +1,4 @@
-# v.2.0.13
+# v.2.0.14
 
 - simplified webpack config
 - enabled loose mode where available for testing purposes
