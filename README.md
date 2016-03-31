@@ -6,8 +6,6 @@
 [![npm version](https://badge.fury.io/js/boily.svg)](https://badge.fury.io/js/boily)
 [![npm](https://img.shields.io/npm/l/express.svg?style=flat-square)](https://github.com/kflash/boily/blob/master/LICENSE.md)
 
-> A starter kit to get you up and running with a bunch of awesome new front-end technologies
-
 ## Features
 
 * [ES6 with Babel](http://babeljs.io/) for ES6 and ES7
