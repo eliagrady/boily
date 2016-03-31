@@ -26,7 +26,7 @@ module.exports = {
 			// https://github.com/webpack/webpack/issues/177
 			{
 				test: /sinon\.js/,
-				loader: "imports?define=>false,require=>false"
+				loader: 'imports?define=>false,require=>false'
 			},
 			// Perform babel transpiling on all non-source, test files.
 			{
@@ -37,12 +37,6 @@ module.exports = {
 
 				],
 				loader: 'babel-loader'
-			},
-			// This allows the test setup scripts to load `package.json`
-			{
-				test: /\.json$/,
-				exclude: /node_modules/,
-				loader: 'json-loader'
 			},
 			// Instrument source files with isparta-loader (will perform babel transpiling).
 			{

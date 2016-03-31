@@ -19,7 +19,7 @@ const copyright =
 	' * ' + pack.name + ' v' + pack.version + '\n' +
 	' * (c) ' + new Date().getFullYear() + ' ' + pack.author.name + '\n' +
 	' * Released under the ' + pack.license + ' License.\n' +
-	' */'
+	' */';
 
 const entry = p.resolve('src/index.js');
 const dest  = p.resolve(`dist/boily.${process.env.NODE_ENV === 'production' ? 'min.js' : 'js'}`);

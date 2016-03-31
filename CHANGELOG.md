@@ -1,3 +1,9 @@
+# v.2.0.19
+
+- fixed minor webpack config issues
+- updated depednencies
+- updated readme
+
 # v.2.0.14
 
 - simplified webpack config

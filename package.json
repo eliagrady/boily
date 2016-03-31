@@ -1,7 +1,7 @@
 {
   "name": "boily",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "license": "MIT",
 
   "author": {
@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
-    "babel-eslint": "^6.0.0",
+    "babel-eslint": "^6.0.1",
     "babel-loader": "^6.2.4",
     "babel-register": "^6.7.2",
     "babel-core": "^6.7.4",
