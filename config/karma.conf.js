@@ -52,10 +52,16 @@ module.exports = function(config, specificOptions) {
 			divider: ''
 		},
 		coverageReporter: {
-			reporters: [
-				{ type: 'html', dir: 'coverage/' },
-				{ type: 'text' }
-			]
+			reporters: [{
+				type: 'html',
+				dir: '../coverage'
+			}, {
+				type: 'text',
+				dir: '../coverage'
+			}, {
+				type: 'lcov',
+				dir: '../coverage'
+			}]
 		},
 
 		// enable / disable watching file and executing tests whenever any file changes
