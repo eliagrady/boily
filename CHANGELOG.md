@@ -1,3 +1,8 @@
+# v.2.0.11
+
+- fixed couple of rewire issues ( brucek )
+- fixed karma issues
+
 # v.2.0.10
 
 - fixed issue where older nodeJS are not supported anymore
