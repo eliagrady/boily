@@ -38,7 +38,13 @@ const plugins = [
 	babel({
 		babelrc: false,
 		presets: 'es2015-rollup',
-		plugins: ["transform-flow-strip-types"]
+		plugins: [
+			'transform-flow-strip-types',
+			'syntax-flow',
+			'transform-remove-debugger',
+			'transform-remove-console',
+			'transform-undefined-to-void'
+		]
 	}),
 	nodeResolve({
 		jsnext: true,
@@ -73,5 +79,3 @@ if (process.env.NODE_ENV === 'production') {
 
 Promise.resolve(rollup({entry, plugins}))
 	.then(({write}) => write(bundleConfig));
-
-process.on('unhandledRejection', (reason) => {throw reason;});

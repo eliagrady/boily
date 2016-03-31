@@ -5,6 +5,14 @@
     "plugins": [
         "transform-object-rest-spread",
         "transform-flow-strip-types",
-        "syntax-flow"
-    ]
+        "syntax-flow",
+        "transform-remove-debugger",
+        "transform-remove-console",
+        "transform-undefined-to-void"
+    ],
+    "env": {
+      "test": {
+        "plugins": ["rewire"]
+      }
+    }
 }

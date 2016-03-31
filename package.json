@@ -1,7 +1,7 @@
 {
   "name": "boily",
   "description": "Boilerplate for creating libraries with rollup and rewire",
-  "version": "2.0.11",
+  "version": "2.1.0",
   "license": "MIT",
 
   "author": {
@@ -24,8 +24,12 @@
     "babel-preset-es2015-rollup": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0-1",
     "babel-plugin-syntax-jsx": "^6.5.0-1",
-	  "babel-plugin-syntax-flow": "^6.5.0-1",
+	"babel-plugin-syntax-flow": "^6.5.0-1",
     "babel-plugin-transform-flow-strip-types": "^6.7.0",
+    "babel-plugin-transform-remove-debugger": "^6.5.0",
+    "babel-plugin-transform-remove-console": "^6.5.0",
+    "babel-plugin-transform-undefined-to-void": "^6.5.0",
+    "babel-plugin-transform-object-assign": "^6.5.0",
     "karma": "0.13.22",
     "karma-coverage": "^0.5.5",
     "karma-coveralls": "^1.1.2",
@@ -90,7 +94,8 @@
     "sinon",
     "webpack",
     "eslint",
-    "bundle"
+    "bundle",
+    "modules"
   ],
   "main": "dist/boily.min.js",
   "repository": {
@@ -99,9 +104,9 @@
   },
   "scripts": {
     "clean": "rimraf coverage/ dist/",
+    "build": "npm run clean && mkdirp dist && npm run build:dev && npm run build:prod",
     "build:dev": "cross-env NODE_ENV=development babel-node config/rollup.config.js",
     "build:prod": "cross-env NODE_ENV=production babel-node config/rollup.config.js",
-    "build": "npm run clean && mkdirp dist && npm run build:dev && npm run build:prod",
     "browser": "webpack-dev-server --quiet --config config/webpack.dev.conf.js",
     "test:server": "mocha --opts config/mocha.opts",
     "test:browser": "karma start config/karma.conf.js --no-auto-watch",
@@ -122,9 +127,7 @@
     "package:upgrade": "ncu -u",
     "package:prod": "ncu -u",
     "package:dev": "ncu -p -u",
-    "preversion": "[[ -z $(git status --porcelain) ]] && npm run build && git add -A dist && git commit -m 'Build lib'",
-    "postpublish": "git push origin master --follow-tags",
-    "commit": "git-cz"
+    "postpublish": "git push origin master --follow-tags"
   },
   "pre-commit": [
     "test",

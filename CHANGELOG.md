@@ -1,3 +1,11 @@
+# v.2.1.0
+
+- added a few babel minification helpers
+   1. auto-remove debugger
+   2. auto-remove console.log
+   3. transform undefined to void 0
+-
+
 # v.2.0.11
 
 - fixed couple of rewire issues ( brucek )

@@ -31,7 +31,11 @@
         var runner = mocha.run();
 
         runner.globals(['expect', 'mock', 'promise', 'sandbox', 'spy', 'stub', 'useFakeServer', 'useFakeTimers', 'useFakeXMLHttpRequest']);
+        runner.chai = chai;
+        runner.sinon  = sinon;
         runner.expect = chai.expect;
+
+        chai.use(sinon-chai);
 
         beforeEach(function() {
             // Using these globally-available Sinon features is preferrable, as they're
