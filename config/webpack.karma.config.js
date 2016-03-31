@@ -7,6 +7,10 @@ module.exports = {
 	hot:false,
 	output: {},
 	entry: {},
+	// *optional* babel options: isparta will use it as well as babel-loader
+	babel: {
+		presets: ['es2015']
+	},
 	isparta: {
 		embedSource: true,
 		noAutoWrap: true,
