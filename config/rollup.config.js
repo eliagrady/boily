@@ -9,6 +9,7 @@ import filesize from 'rollup-plugin-filesize';
 import pack from '../package.json';
 import typescript from 'rollup-plugin-typescript';
 import stub from 'rollup-plugin-stub';
+import eslint from 'rollup-plugin-eslint';
 
 /*
  * Banner
@@ -46,6 +47,7 @@ const plugins = [
 			'transform-undefined-to-void'
 		]
 	}),
+	eslint(), // add your own Eslint configuration here
 	nodeResolve({
 		jsnext: true,
 		main: true

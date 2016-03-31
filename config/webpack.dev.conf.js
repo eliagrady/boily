@@ -21,15 +21,7 @@ module.exports = {
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				loader: 'babel-loader',
-				query: {
-					plugins: [
-						'transform-object-rest-spread',
-						'transform-flow-strip-types',
-						'syntax-flow',
-						'babel-plugin-rewire'
-					]
-				}
+				loader: 'babel-loader'
 			},
 			// This allows the test setup scripts to load `package.json`
 			{

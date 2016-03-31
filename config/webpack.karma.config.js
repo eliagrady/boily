@@ -9,14 +9,14 @@ module.exports = {
 	entry: {},
 	// *optional* babel options: isparta will use it as well as babel-loader
 	babel: {
-		presets: ['es2015']
+		presets: ['es2015-loose']
 	},
 	isparta: {
 		embedSource: true,
 		noAutoWrap: true,
 		// these babel options will be passed only to isparta and not to babel-loader
 		babel: {
-			presets: ['es2015']
+			presets: ['es2015-loose']
 		}
 	},
 	module: {

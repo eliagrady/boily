@@ -1,3 +1,9 @@
+# v.2.0.13
+
+- simplified webpack config
+- enabled loose mode where available for testing purposes
+- added eslint for Rollup bundles
+
 # v.2.0.11
 
 - fixed issues where coverage reported wrong line numbers
