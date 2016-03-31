@@ -1,7 +1,7 @@
 {
   "name": "boily",
-  "description": "Boilerplate for creating libraries with rollup and rewire",
-  "version": "2.1.4",
+  "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
+  "version": "2.1.8",
   "license": "MIT",
 
   "author": {
@@ -26,10 +26,10 @@
     "babel-plugin-syntax-jsx": "^6.5.0-1",
 	"babel-plugin-syntax-flow": "^6.5.0-1",
     "babel-plugin-transform-flow-strip-types": "^6.7.0",
-    "babel-plugin-transform-remove-debugger": "^6.5.0",
-    "babel-plugin-transform-remove-console": "^6.5.0",
-    "babel-plugin-transform-undefined-to-void": "^6.5.0",
-    "babel-plugin-transform-object-assign": "^6.5.0",
+    "babel-plugin-transform-remove-debugger": "^6.5.0-1",
+    "babel-plugin-transform-remove-console": "^6.5.0-1",
+    "babel-plugin-transform-undefined-to-void": "^6.5.0-1",
+    "babel-plugin-transform-object-assign": "^6.5.0-1",
     "karma": "0.13.22",
     "karma-coverage": "^0.5.5",
     "karma-coveralls": "^1.1.2",
