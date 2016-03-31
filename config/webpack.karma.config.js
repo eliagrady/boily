@@ -11,7 +11,7 @@ module.exports = {
 		postLoaders: [{
 			test: /\.js?$/,
 			exclude: /(src\/dist|packages|.git|node_modules|__tests__)/,
-			include: path.resolve('src/'),
+			include: path.join(__dirname, '../src'),
 			loader: 'isparta',
 			query: {
 				cacheDirectory: true
@@ -21,7 +21,7 @@ module.exports = {
 			// This is what allows us to author in future JavaScript
 			{
 				test: /\.js$/,
-				exclude: /node_modules/,
+				exclude: /(src\/dist|.git|node_modules)/,
 				loader: 'babel-loader',
 				query: {
 					cacheDirectory: true,
