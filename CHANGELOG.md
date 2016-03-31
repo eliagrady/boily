@@ -1,3 +1,7 @@
+# v.2.0.11
+
+- fixed issues where coverage reported wrong line numbers
+
 # v.2.1.0
 
 - added a few babel minification helpers

@@ -1,7 +1,7 @@
 {
   "name": "boily",
   "description": "Boilerplate for creating libraries with rollup and rewire",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "license": "MIT",
 
   "author": {

@@ -8,7 +8,8 @@
         "syntax-flow",
         "transform-remove-debugger",
         "transform-remove-console",
-        "transform-undefined-to-void"
+        "transform-undefined-to-void",
+        'babel-plugin-rewire'
     ],
     "env": {
       "test": {

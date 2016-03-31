@@ -7,34 +7,47 @@ module.exports = {
 	hot:false,
 	output: {},
 	entry: {},
+	isparta: {
+		embedSource: true,
+		noAutoWrap: true,
+		// these babel options will be passed only to isparta and not to babel-loader
+		babel: {
+			presets: ['es2015']
+		}
+	},
 	module: {
-		postLoaders: [{
-			test: /\.js?$/,
-			exclude: /(src\/dist|packages|.git|node_modules|__tests__)/,
-			include: path.join(__dirname, '../src'),
-			loader: 'isparta',
-			query: {
-				cacheDirectory: true
-			}
-		}],
+
 		loaders: [
-			// This is what allows us to author in future JavaScript
+			// Use imports loader to hack webpacking sinon.
+			// https://github.com/webpack/webpack/issues/177
+			{
+				test: /sinon\.js/,
+				loader: "imports?define=>false,require=>false"
+			},
+			// Perform babel transpiling on all non-source, test files.
 			{
 				test: /\.js$/,
-				exclude: /(src\/dist|.git|node_modules)/,
-				loader: 'babel-loader',
-				query: {
-					cacheDirectory: true,
-					plugins: [
-						'babel-plugin-rewire'
-					]
-				}
+				exclude: [
+					path.resolve('node_modules/'),
+					path.join(__dirname, '../src')
+
+				],
+				loader: 'babel-loader'
 			},
 			// This allows the test setup scripts to load `package.json`
 			{
 				test: /\.json$/,
 				exclude: /node_modules/,
 				loader: 'json-loader'
+			},
+			// Instrument source files with isparta-loader (will perform babel transpiling).
+			{
+				test: /\.js?$/,
+				include: path.join(__dirname, '../src'),
+				loader: 'isparta',
+				query: {
+					cacheDirectory: true
+				}
 			}
 		]
 	},

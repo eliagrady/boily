@@ -4,9 +4,9 @@ import boily from './foo';
 boily.version = 'VERSION';
 
 // Flow example
-function foo(one: any, two: number, three?): string {}
+//function foo(one: any, two: number, three?): string {}
 
-boily.flow = foo;
+//boily.flow = foo;
 
 // Only for development mode
 if ( process.env.NODE_ENV !== 'production' ) {
