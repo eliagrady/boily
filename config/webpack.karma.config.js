@@ -25,9 +25,9 @@ module.exports = {
 				loader: 'babel-loader',
 				query: {
 					cacheDirectory: true,
-          plugins: [
-            'babel-plugin-rewire'
-          ]
+					plugins: [
+						'babel-plugin-rewire'
+					]
 				}
 			},
 			// This allows the test setup scripts to load `package.json`
