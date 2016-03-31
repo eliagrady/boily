@@ -1,4 +1,4 @@
-# Boilerplate for creating libraries with Rollup written in ES2015 for Node and the browser.
+# ES2015 boilerplate for creating libraries with the newest front-end technologies.
 
 [![Build Status](https://travis-ci.org/Kflash/boily.svg?branch=master)](https://travis-ci.org/Kflash/boily)
 [![devDependency Status](https://david-dm.org/kflash/boily/dev-status.svg)](https://david-dm.org/kflash/boily #info=devDependencies)
@@ -6,7 +6,7 @@
 [![npm version](https://badge.fury.io/js/boily.svg)](https://badge.fury.io/js/boily)
 [![npm](https://img.shields.io/npm/l/express.svg?style=flat-square)](https://github.com/kflash/boily/blob/master/LICENSE.md)
 
-> A starter kit to get you up and running with a bunch of awesome new front-end technologies using Babel, Rollup, Webpack, Mocha, Sinon-chai, Isparta, and ESLint without any framework dependencies.
+> A starter kit to get you up and running with a bunch of awesome new front-end technologies
 
 ## Features
 
