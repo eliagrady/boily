@@ -22,7 +22,6 @@ env:
 
 
 addons:
- firefox: "38.0"
   apt:
     sources:
       - ubuntu-toolchain-r-test
