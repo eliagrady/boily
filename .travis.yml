@@ -28,11 +28,6 @@ addons:
     packages:
       - g++-4.8
 
-before_install:
-- export CHROME_BIN=$HOME/.chrome/chromium/chrome-linux/chrome
-  - export DISPLAY=:99.0
-  - export GIT_SHA=$(git rev-parse HEAD)
-   - sh -e /etc/init.d/xvfb start
 
 install:
   # Install version of npm that we are locked against
