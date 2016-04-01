@@ -47,7 +47,7 @@ module.exports = {
 		proxy: {
 			'/': {
 				bypass: function(req, res, proxyOptions) {
-					return '/config/runner.html';
+						return '/config/runner.html';
 				}
 			}
 		}
