@@ -1,9 +1,8 @@
 language: node_js
-
+sudo: false
 node_js:
   - 'stable'
-
-sudo: false;
+  - '4.4'
 
 cache:
   directories:
@@ -11,6 +10,20 @@ cache:
 
 before_install:
   - "nvm use $TRAVIS_NODE_VERSION"
+
+env:
+ global:
+    - CXX=g++-4.8  # node 4 likes the G++ v4.8 compiler
+
+# node 4 likes the G++ v4.8 compiler
+# see https://docs.travis-ci.com/user/languages/javascript-with-nodejs#Node.js-v4-(or-io.js-v3)-compiler-requirements
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+
 
 install:
   # - npm config set registry http://23.251.144.68
