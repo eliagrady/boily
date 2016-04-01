@@ -1,7 +1,7 @@
 {
   "name": "boily",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "license": "MIT",
 
   "author": {
@@ -48,6 +48,7 @@
     "karma-ie-launcher": "^0.2.0",
     "mocha": "^2.4.5",
     "mocha-lcov-reporter": "^1.2.0",
+    "mocha-phantomjs": "^4.0.2",
     "phantomjs-prebuilt": "^2.1.7",
     "rollup": "^0.25.7",
     "rollup-plugin-babel": "^2.4.0",

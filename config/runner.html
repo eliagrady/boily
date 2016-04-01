@@ -27,8 +27,17 @@
 
     window.expect = window.chai.expect;
 
-    onload = function() {
-        var runner = mocha.run();
+    var onload = function() {
+
+        var runner;
+
+        mocha.checkLeaks();
+
+        if (window.mochaPhantomJS) {
+          runner = mochaPhantomJS.run();
+        } else {
+            runner = mocha.run();
+        }
 
         runner.globals(['expect', 'mock', 'promise', 'sandbox', 'spy', 'stub', 'useFakeServer', 'useFakeTimers', 'useFakeXMLHttpRequest']);
         runner.chai = chai;
