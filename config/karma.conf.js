@@ -66,7 +66,7 @@ module.exports = function(config, specificOptions) {
 
 		// enable / disable watching file and executing tests whenever any file changes
 		autoWatch: true,
-		browsers: ['Chrome'],
+		browsers: ['PhantomJS'],
 
 		customLaunchers: {
 		Chrome_for_Travis_CI: {
