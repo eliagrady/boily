@@ -4,7 +4,7 @@ node_js:
   - 'stable'
 
 # Don't Use container-based Travis infrastructure else we can't get latest Chrome.
-sudo: false
+sudo: true
 
 cache:
   directories:
