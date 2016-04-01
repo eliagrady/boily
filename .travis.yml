@@ -3,31 +3,14 @@ language: node_js
 node_js:
   - 'stable'
 
-# Don't Use container-based Travis infrastructure else we can't get latest Chrome.
-sudo: required
-
-services:
-  - docker
-
-env:
-   DOCKER_COMPOSE_VERSION: 1.4.2
+sudo:false
 
 cache:
   directories:
     - node_modules
 
 before_install:
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
-  - export CHROME_BIN=/usr/bin/google-chrome
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - sudo apt-get update
-  - sudo apt-get install -y libappindicator1 fonts-liberation
-  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  - sudo dpkg -i google-chrome*.deb
+  - "nvm use $TRAVIS_NODE_VERSION"
 
 install:
   # - npm config set registry http://23.251.144.68
