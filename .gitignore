@@ -1,13 +1,15 @@
+# Don’t commit the following directories and files
 .git
-lib
+
 coverage
 .DS_Store
-.idea/workspace.xml
-/node_modules/
-*.log
-*.swp
-*~
-.idea
-.iml
+node_modules
+
+#Webstorm
+/.idea/
+
+# Ignore npm debug log
 npm-debug.log
-/tmp/
+
+# build-analytics
+.build-analytics

@@ -134,7 +134,7 @@
     "lint:source"
   ],
   "engines": {
-    "node": "<6",
+    "node": ">= 5.4.1 < 6",
     "npm": "~3.0"
   }
 }

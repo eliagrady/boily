@@ -1,3 +1,8 @@
+# v.2.0.20
+
+- improved Travis performance. PhantomJS now used by default
+- minor cleanup
+
 # v.2.0.19
 
 - fixed minor webpack config issues
