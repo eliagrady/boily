@@ -4,20 +4,11 @@ node_js:
   - 'stable'
 
 # Don't Use container-based Travis infrastructure else we can't get latest Chrome.
-sudo: true
-
-env:
-  global:
-    - BIN="node" ISTANBUL=false OPTION=""
-    - NPM_VERSION="^2.0.0""
+sudo: false
 
 cache:
   directories:
     - node_modules
-
-matrix:
-  include:
-      env:
 
 before_install:
   - "nvm use $TRAVIS_NODE_VERSION"
@@ -35,7 +26,6 @@ install:
   - npm config set spin false
   # Log HTTP requests
   - npm config set loglevel http
-  - npm install -g npm@3.8.3
   # Install npm dependencies and ensure that npm cache is not stale
   - npm install
 
