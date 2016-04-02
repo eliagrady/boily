@@ -9,7 +9,8 @@
         "transform-remove-debugger",
         "transform-remove-console",
         "transform-undefined-to-void",
-        'babel-plugin-rewire'
+        'babel-plugin-rewire',
+         "check-es2015-constants"
     ],
     "env": {
       "test": {

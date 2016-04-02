@@ -1,3 +1,8 @@
+# v.3.0.3
+
+- minor fixes
+- 
+
 # v.3.0.0
 
 - major rewrite

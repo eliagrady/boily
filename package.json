@@ -1,6 +1,6 @@
 {
   "name": "boily",
-  "version": "3.0.1",
+  "version": "3.0.3",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
@@ -24,6 +24,7 @@
     "lint": "npm run lint:source && npm run lint:tests",
     "lint:tests": "eslint ./src/**/*__tests__*/**/*.js",
     "lint:source": "eslint src",
+    "lint:gulp": "gulp lint:gulp",
     "watch:server": "gulp watch:server",
     "watch:browser": "karma start config/karma.conf.js --auto-watch --no-single-run",
     "watch:phantom": "gulp watch:phantom",
@@ -106,6 +107,7 @@
     "gulp-replace": "^0.5.4",
     "gulp-util": "^3.0.7",
     "gulp-coveralls": "^0.1.4",
+    "gulp-task-listing": "^1.0.1",
     "isparta": "^4.0.0",
     "json-loader": "^0.5.3",
     "mocha": "^2.4.5",

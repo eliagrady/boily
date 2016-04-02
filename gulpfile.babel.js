@@ -21,6 +21,7 @@ import karma from 'karma';
 import replace from 'gulp-replace';
 import sourcemaps from 'gulp-sourcemaps';
 import coveralls from 'gulp-coveralls';
+import taskListing from 'gulp-task-listing';
 
 // Load all of our Gulp plugins
 const $ = loadPlugins();
@@ -56,10 +57,6 @@ function lint(files) {
 		.pipe($.eslint.format())
 		.pipe($.eslint.failOnError())
 		.on('error', onError);
-}
-
-function lintGulpfile() {
-	return lint('gulpfile.babel.js');
 }
 
 function _mocha() {
@@ -117,7 +114,6 @@ function testBrowser() {
 	// Our testing bundle is made up of our unit tests, which
 	// should individually load up pieces of our application.
 	// We also include the browser setup file.
-	//const testFiles = glob.sync('./test/unit/**/*.js');
 	const testFiles = glob.sync('./src/**/*__tests__*/**/*spec.browser.js')
 		.concat(glob.sync('./src/**/*__tests__*/**/*spec.server.js'));
 	const allFiles = ['./config/setup/browser.js'].concat(testFiles);
@@ -173,7 +169,6 @@ function testBrowser() {
 					host: 'localhost',
 					start: true
 				});
-				const watcher = gulp.watch(watchFiles, ['lint']);
 			} else {
 				$.livereload.reload('./tmp/__spec-build.js');
 			}
@@ -208,7 +203,14 @@ function bundle(format) {
 				babelrc: false,
 				presets: 'es2015-rollup',
 				exclude: 'node_modules/**',
-				plugins: env.NODE_ENV ? ['transform-inline-environment-variables'] : []
+				plugins: env.NODE_ENV ? [
+					'transform-flow-strip-types',
+					'syntax-flow',
+					'transform-remove-debugger',
+					'transform-remove-console',
+					'transform-undefined-to-void',
+					'transform-inline-environment-variables'
+				] : []
 			}),
 			eslint(), // add your own Eslint configuration here
 			nodeResolve({
@@ -317,10 +319,6 @@ function jsES2015() {
 }
 
 function jsDist() {
-	// These must be run serially: clean must complete before any of the js
-	// targets run. The js and minify targets cannot run in parallel as they both
-	// change process.env.NODE_ENV. The CommonJS target could run in parallel
-	// with the js and minify targets, but currently is not.
 	return clean()
 		.then(jsCommonJS)
 		.then(js)
@@ -328,10 +326,6 @@ function jsDist() {
 }
 
 function jsES2015Dist() {
-	// These must be run serially: clean must complete before any of the js
-	// targets run. The js and minify targets cannot run in parallel as they both
-	// change process.env.NODE_ENV. The CommonJS target could run in parallel
-	// with the js and minify targets, but currently is not.
 	return clean()
 		.then(jsES2015)
 		.then(js)
@@ -415,19 +409,19 @@ gulp.task('clean-tmp', (done) => {
 });
 
 // Lint our source code
-gulp.task('lint-src', () => lint('src/**/*.js'));
+gulp.task('lint:src', () => lint('src/**/*.js'));
 
 // Lint our test code
-gulp.task('lint-test', () => lint('src/**/*__tests__*/**/*.js'));
+gulp.task('lint:test', () => lint('src/**/*__tests__*/**/*.js'));
 
 // Lint this file
-gulp.task('lint-gulpfile', lintGulpfile);
+gulp.task('lint:gulp', () => lint('gulpfile.babel.js'));
 
 // Lint everything
 gulp.task('lint', ['lint-src', 'lint-test']);
 
 // Build two versions of the library
-//gulp.task('build', ['lint', 'clean'], js);
+// gulp.task('build', ['lint', 'clean'], js);
 
 // Lint and run our tests
 gulp.task('test', ['lint'], test);
@@ -447,7 +441,7 @@ gulp.task('default', ['test']);
 // clean
 gulp.task('clean', clean);
 
-// Run all unit tests for browser
+// Run all unit tests for both Chrome and Firefox
 gulp.task('unit', unit);
 
 // Run all unit tests for server
@@ -490,3 +484,6 @@ gulp.task('build:es6', jsES2015Dist);
 
 // Build a closure bundle
 gulp.task('build:closure', jsClosure);
+
+// List all tasks
+gulp.task('help', taskListing.withFilters(/:/));
