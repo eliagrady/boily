@@ -23,28 +23,32 @@
 * Browser tests in the browser
 * Node >= 5.x
 
-## Getting Started
+## Quick start
 
-Just clone the repo and install the necessary node modules.
+The only development dependency of this project is [Node.js](https://nodejs.org/en/). So just make sure you have it installed. Then type few commands known to every Node developer...
 
 ```js
-$ git clone https://github.com/kflash/boily.git boily
+$ git clone https://github.com/kflash/boily.git
 $ cd boily
 $ npm install                   # Install Node modules listed in ./package.json
 $ npm run build                 # Build a minified and a non-minified version of the library
 ```
+
+... and boom! You have it all setup for you!
+
 ## Workflow
 
-* `npm run build` - Build task that generate a minified and a non-minified script
-* `npm run build:prod` - Build task that generate a production bundle
-* `npm run build:dev` - Build task that generate a development bundle
+* `npm run build` - Build task that generates both minified and non-minified scripts
+* `npm run build:prod` - Build task that generate a minified script
+* `npm run build:dev` - Build task that generate a non-minified script
 * `npm run build:es6` - Build task that generate and preserves ES6 imports and exports into a ES2015 development bundle
 * `npm run build:closure` - Build task that generate a Google Closure bundle
 * `npm run build:common` - Build task that generate a CommonJS bundle
 * `npm run lint:source` - Lint the source
 * `npm run lint:tests` - Lint the unit tests
+* `npm run lint:gulp` - Lint the gulp file
 * `npm run clean` - Remove the coverage report - and the *dist* folder
-* `npm run coverage` - Shows the coverage report
+* `npm run coverage` - Run Isparta, a code coverage tool
 * `npm run test` - Runs unit tests for both server and the browser
 * `npm run test:browser` - Runs the unit tests for browser
 * `npm run test:server` - Runs the unit tests on the server
@@ -54,13 +58,14 @@ $ npm run build                 # Build a minified and a non-minified version of
 * `npm run karma:firefox` - Runs the unit tests for browser with Firefox
 * `npm run watch:server` - Run all unit tests for server & watch files for changes
 * `npm run watch:browser` - Run all unit tests for browser & watch files for changes
+* `npm run watch:chrome` - Run all unit tests for browser with Chrome & watch files for changes
+* `npm run watch:firefox` - Run all unit tests for browser with Firefox & watch files for changes
+* `npm run watch:phantom` - Run all unit tests for browser with PhantomJS & watch files for changes
 * `npm run packages` - List installed packages
 * `npm run package:purge` - Remove all dependencies
 * `npm run package:reinstall` - Reinstall all dependencies
 * `npm run package:check` - shows a list over dependencies with a higher version number then the current one - if any
 * `npm run package:upgrade` - Automaticly upgrade all devDependencies & dependencies, and update package.json
-* `npm run package:dev` - Automaticly upgrade all devDependencies and update package.json
-* `npm run package:prod` - Automaticly upgrade all dependencies and update package.json
 * `npm run browser` - runs browser unit tests in the browser. All of your unit tests get bundled automatically.
 
 ## Testing environment
@@ -165,5 +170,18 @@ commonJS, ES6, UMD, and all other know formats.
 Yes.
 
 
-## License
-MIT Â© [KFlash](https://github.com/kflash)
+# License
+
+The MIT License (MIT)
+
+Copyright (c) 2016 KFlash
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the 
+Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
+and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION 
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
