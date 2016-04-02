@@ -1,5 +1,3 @@
-const path = require('path');
-
 // Karma configuration
 module.exports = function(config, specificOptions) {
 	config.set({
@@ -33,14 +31,23 @@ module.exports = function(config, specificOptions) {
 		webpack: {
 			cache: true,
 			module: {
-				loaders: [{
-					test: /\.js$/,
-					exclude: /(src\/dist|.git|node_modules)/,
-					loader: 'babel-loader',
-					query: {
-						cacheDirectory: true,
+				loaders: [
+					// Use imports loader to hack webpacking sinon.
+					// https://github.com/webpack/webpack/issues/177
+					{
+						test: /sinon\.js/,
+						loader: 'imports?define=>false,require=>false'
+					},
+					// Perform babel transpiling on all non-source, test files.
+					{
+						test: /\.js$/,
+						exclude: /(src\/dist|.git|node_modules)/,
+						loader: 'babel-loader',
+						query: {
+							cacheDirectory: true
+						}
 					}
-				}]
+				]
 			}
 		},
 		webpackMiddleware: {

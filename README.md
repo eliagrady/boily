@@ -140,5 +140,9 @@ Download the package, and run this from the command line:
 npm install
 ```
 
+## Known issues
+
+- Sourcemaps are not working for Karma tests, and the coverage reports outputs wrong info. This is not an issue with Boily.  
+
 ## License
 MIT Â© [KFlash](https://github.com/kflash)
