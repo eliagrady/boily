@@ -1,5 +1,4 @@
 const path = require('path');
-const webpackConfig = require('./webpack.karma.config');
 
 // Karma configuration
 module.exports = function(config, specificOptions) {
@@ -32,7 +31,17 @@ module.exports = function(config, specificOptions) {
 			'../src/**/*__tests__*/**/*spec.browser.js': ['webpack', 'sourcemap']
 		},
 		webpack: {
-			module: webpackConfig.module
+			cache: true,
+			module: {
+				loaders: [{
+					test: /\.js$/,
+					exclude: /(src\/dist|.git|node_modules)/,
+					loader: 'babel-loader',
+					query: {
+						cacheDirectory: true,
+					}
+				}]
+			}
 		},
 		webpackMiddleware: {
 			noInfo: true
@@ -40,7 +49,7 @@ module.exports = function(config, specificOptions) {
 		// test results reporter to use
 		// possible values: 'dots', 'progress'
 		// available reporters: https://npmjs.org/browse/keyword/karma-reporter
-		reporters: ['mocha', 'coverage'],
+		reporters: ['mocha'],
 		// reporter options
 		mochaReporter: {
 			colors: {
@@ -51,21 +60,7 @@ module.exports = function(config, specificOptions) {
 			},
 			divider: ''
 		},
-		coverageReporter: {
-			reporters: [{
-				type: 'html',
-				dir: '../coverage'
-			}, {
-				type: 'text',
-				dir: '../coverage'
-			}, {
-				type: 'lcov',
-				dir: '../coverage'
-			}]
-		},
 
-		// enable / disable watching file and executing tests whenever any file changes
-		autoWatch: true,
 		browsers: ['PhantomJS'],
 		browserDisconnectTimeout: 10000,
 		browserDisconnectTolerance: 2,
@@ -94,8 +89,6 @@ module.exports = function(config, specificOptions) {
 
 	if (process.env.TRAVIS) {
 
-		// Used by Travis to push coveralls info corretly to example coveralls.io
-		config.reporters = ['mocha', 'coverage', 'coveralls'];
 		// Karma (with socket.io 1.x) buffers by 50 and 50 tests can take a long time on IEs;-)
 		config.browserNoActivityTimeout = 120000;
 

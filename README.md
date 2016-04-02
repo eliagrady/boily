@@ -1,14 +1,3 @@
-
-# MAJOR RE-FACTORING IN PROGRESS!!
-
-
-
-
-
-
-
-
-
 ### ES2015 boilerplate for creating libraries with the newest front-end technologies.
 
 [![Build Status](https://travis-ci.org/Kflash/boily.svg?branch=master)](https://travis-ci.org/Kflash/boily)
@@ -50,6 +39,8 @@ $ npm run build                 # Build a minified and a non-minified version of
 * `npm run build:prod` - Build task that generate a production bundle
 * `npm run build:dev` - Build task that generate a development bundle
 * `npm run build:es6` - Build task that generate and preserves ES6 imports and exports into a ES2015 development bundle
+* `npm run build:closure` - Build task that generate a Google Closure bundle
+* `npm run build:common` - Build task that generate a CommonJS bundle
 * `npm run lint:source` - Lint the source
 * `npm run lint:tests` - Lint the unit tests
 * `npm run clean` - Remove the coverage report - and the *dist* folder
@@ -86,13 +77,14 @@ To keep watching the common test suites that you are working on, simply do `npm 
 ### Adding other test files
 
 - *Browser:*, simply open up the `karma.conf.js` file in the  `~/config` folder and add your files to the `files:` and `preprocessors:` section.
-- *NodejS:* open up the `mocha.opts` file in the  `~/config` folder and add your files to the top of the file.
+- *NodejS:* open up the `gulpfile.babel.js` file and add your files to the top of the file.
 
 *Note!* Karma runs both browser and nodejs unit tests by default.
 
 ## Browser tests
 
-To run your unit tests in the browser, do `npm run browser`, and open `port 8080`. Hot module replacement (WDS) are supported.
+The browser spec runner - `./config.runner.html` - can be opened in a browser to run your tests. For it to work, you must first run `npm run browser`. This will set up a watch task that will 
+automatically refresh the tests when your scripts, or the tests, change.
 
 ### JSX
 

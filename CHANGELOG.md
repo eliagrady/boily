@@ -1,3 +1,13 @@
+# v.3.0.0
+
+- major rewrite
+- gulp added to handle coverage cross-browser. Karma + webpack had a major issue
+- fixed issues where coverage lines was reported wrong
+- fixed issues with mocha tests server side
+- browser tests now require that you open the `test-runner.html` in your browser after you have run `npm run browser`
+- added support for Google Closure
+- added support for bundling till various formats - es6, commonjs, umd, and Google closure
+
 # v.2.0.20
 
 - improved Travis performance. PhantomJS now used by default

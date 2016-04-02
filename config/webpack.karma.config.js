@@ -11,14 +11,6 @@ module.exports = {
 	babel: {
 		presets: ['es2015-loose']
 	},
-	isparta: {
-		embedSource: true,
-		noAutoWrap: true,
-		// these babel options will be passed only to isparta and not to babel-loader
-		babel: {
-			presets: ['es2015-loose']
-		}
-	},
 	module: {
 
 		loaders: [
@@ -37,15 +29,6 @@ module.exports = {
 
 				],
 				loader: 'babel-loader'
-			},
-			// Instrument source files with isparta-loader (will perform babel transpiling).
-			{
-				test: /\.js?$/,
-				include: path.join(__dirname, '../src'),
-				loader: 'isparta',
-				query: {
-					cacheDirectory: true
-				}
 			}
 		]
 	},
