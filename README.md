@@ -19,6 +19,7 @@
 * [Karma](http://karma-runner.github.io/0.13/index.html) as the test runner
 * [Universal Module Definition (UMD) API](https://github.com/umdjs/umd), which provides compatibility with the most popular script loaders, to the output.
 * [Sinon.JS](http://sinonjs.org/) with examples for test doubles
+* [Livereload](http://livereload.com/) an implementation of the LiveReload server in Node.js.
 * Unit tests written with ES2015 get transpiled on the fly
 * Browser tests in the browser
 * Node >= 5.x
@@ -44,6 +45,7 @@ $ npm run build                 # Build a minified and a non-minified version of
 * `npm run build:es6` - Build task that generate and preserves ES6 imports and exports into a ES2015 development bundle
 * `npm run build:closure` - Build task that generate a Google Closure bundle
 * `npm run build:common` - Build task that generate a CommonJS bundle
+* `npm run build:all` - Runs all build tasks
 * `npm run lint:source` - Lint the source
 * `npm run lint:tests` - Lint the unit tests
 * `npm run lint:gulp` - Lint the gulp file

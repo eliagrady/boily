@@ -1,3 +1,11 @@
+# v.3.0.7
+  
+ - minor fixes
+ - fixed issues where flow didn't work as expected
+ - fixed bundle issues to cmd, es6 etc
+ - updated readme
+ - general cleanup
+ 
 # v.3.0.3
 
 - minor fixes

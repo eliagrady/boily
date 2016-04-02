@@ -65,6 +65,8 @@ function _mocha() {
 		})
 		.pipe($.mocha({
 			reporter: 'spec',
+			ui: 'bdd',
+			timeout: 15000,
 			globals: Object.keys({
 				'expect': true,
 				'mock': true,
@@ -273,7 +275,7 @@ function jsClosure(done) {
 	const moduleDeclaration = 'goog.module(\'' + googModuleName + '\');';
 
 	return bundle('cjs')
-		.pipe(source(artifactName + '-closure.js'))
+		.pipe(source(artifactName + '.closure.js'))
 		.pipe(buffer())
 		.pipe(sourcemaps.init({
 			loadMaps: true
@@ -318,18 +320,9 @@ function jsES2015() {
 		.pipe(gulp.dest('dist'));
 }
 
-function jsDist() {
-	return clean()
-		.then(jsCommonJS)
-		.then(js)
-		.then(minify);
-}
-
 function jsES2015Dist() {
 	return clean()
 		.then(jsES2015)
-		.then(js)
-		.then(minify);
 }
 
 function unit(done) {
@@ -351,7 +344,6 @@ function KarmaFirefox(done) {
 		browsers: ['Firefox']
 	}, function(resultCode) {}).start();
 }
-
 
 function KarmaChrome(done) {
 	env.NODE_ENV = 'test';
@@ -403,8 +395,34 @@ function PhantomWatch(done) {
 	}, function(resultCode) {}).start();
 }
 
+function js() {
+	env.NODE_ENV = 'development';
+	env.min = false;
+
+	return bundle('umd')
+		.pipe(source(artifactName + '.js'))
+		.pipe(buffer())
+		.pipe(sourcemaps.init({loadMaps: true}))
+		.pipe(sourcemaps.write('.'))
+		.pipe(gulp.dest('dist'));
+}
+
+
+function buildAll() {
+	// These must be run serially: clean must complete before any of the js
+	// targets run. The js and jsMin targets cannot run in parallel as they both
+	// change process.env.NODE_ENV. The CommonJS target could run in parallel
+	// with the js and jsMin targets, but currently is not.
+	return clean()
+		.then(jsCommonJS)
+		.then(jsES2015Dist)
+		.then(jsClosure)
+		.then(js)
+		.then(jsMin);
+}
+
 // Remove our temporary files
-gulp.task('clean-tmp', (done) => {
+gulp.task('clean:tmp', (done) => {
 	del(['tmp']).then(() => done());
 });
 
@@ -430,7 +448,7 @@ gulp.task('test', ['lint'], test);
 gulp.task('coverage', coverage);
 
 // Set up a livereload environment for our spec runner `test/runner.html`
-gulp.task('browser', ['clean-tmp'], testBrowser);
+gulp.task('browser', ['clean:tmp'], testBrowser);
 
 // Run the headless unit tests as you make changes.
 gulp.task('watch', watch);
@@ -477,10 +495,13 @@ gulp.task('build:prod', minify);
 gulp.task('build:dev', build);
 
 // Build a commonJS bundle
-gulp.task('build:common', jsDist);
+gulp.task('build:common', jsCommonJS);
 
 // Build a ES6 bundle
 gulp.task('build:es6', jsES2015Dist);
+
+// Build a ES6 bundle
+gulp.task('build:all', buildAll);
 
 // Build a closure bundle
 gulp.task('build:closure', jsClosure);
