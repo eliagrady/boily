@@ -44,6 +44,7 @@ $ npm run build                 # Build a minified and a non-minified version of
 * `npm run lint:source` - Lint the source
 * `npm run lint:tests` - Lint the unit tests
 * `npm run clean` - Remove the coverage report - and the *dist* folder
+* `npm run coverage` - Shows the coverage report
 * `npm run test` - Runs unit tests for both server and the browser
 * `npm run test:browser` - Runs the unit tests for browser
 * `npm run test:server` - Runs the unit tests on the server
