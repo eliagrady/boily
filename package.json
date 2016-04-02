@@ -1,6 +1,6 @@
 {
   "name": "boily",
-  "version": "3.0.9",
+  "version": "3.1.0",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
@@ -85,7 +85,7 @@
     "babel-plugin-syntax-jsx": "^6.5.0-1",
     "babel-plugin-syntax-flow": "^6.5.0-1",
     "babel-plugin-transform-flow-strip-types": "^6.7.0",
-    "babel-plugin-transform-inline-environment-variables": "^6.5.0",
+    "babel-plugin-transform-inline-environment-variables": "^6.5.0-1",
     "babel-plugin-transform-remove-debugger": "^6.5.0-1",
     "babel-plugin-transform-remove-console": "^6.5.0-1",
     "babel-plugin-transform-undefined-to-void": "^6.5.0-1",

@@ -1,3 +1,4 @@
+
 import gulp from 'gulp';
 import loadPlugins from 'gulp-load-plugins';
 import del from 'del';
@@ -70,31 +71,6 @@ function lint(files) {
 		.on('error', onError);
 }
 
-function runCoverage(done) {
-	require('babel-register');
-	gulp.src(['./src/**/*.js'])
-		.pipe($.istanbul({
-			instrumenter: Instrumenter
-		}))
-		.pipe($.istanbul.hookRequire())
-		.pipe(coveralls())
-		.on('finish', () => {
-			return gulp.src(['config/setup/node.js', 'specs/**/*spec.browser.js'], {
-					read: false
-				})
-				.pipe($.mocha({
-					reporter: 'spec',
-					ui: 'bdd',
-					timeout: 15000,
-					globals: Object.keys(mochaGlobals),
-					ignoreLeaks: false
-				}))
-				.pipe($.istanbul.writeReports())
-				.on('end', done);
-		});
-}
-
-
 // run server tests
 function runServerTests() {
 	require('babel-register');
@@ -110,85 +86,9 @@ function runServerTests() {
 		}));
 }
 
-const watchFiles = ['src/**/*', './specs/**/*spec.browser.js', './specs/**/*spec.server.js', 'package.json', '**/.eslintrc'];
-
-// Run the headless unit tests as you make changes.
-function watch() {
-	gulp.watch(watchFiles, ['test']);
-}
-
-function testBrowser() {
-	// Our testing bundle is made up of our unit tests, which
-	// should individually load up pieces of our application.
-	// We also include the browser setup file.
-	const testFiles = glob.sync('./specs/**/*spec.browser.js')
-		.concat(glob.sync('./specs/**/*spec.server.js'));
-	const allFiles = ['./config/setup/browser.js'].concat(testFiles);
-
-	// Lets us differentiate between the first build and subsequent builds
-	let firstBuild = true;
-
-	// This empty stream might seem like a hack, but we need to specify all of our files through
-	// the `entry` option of webpack. Otherwise, it ignores whatever file(s) are placed in here.
-	return gulp.src('')
-		.pipe($.plumber())
-		.pipe(webpackStream({
-			watch: true,
-			entry: allFiles,
-			output: {
-				filename: '__spec-build.js'
-			},
-			module: {
-				loaders: [
-					// Use imports loader to hack webpacking sinon.
-					// https://github.com/webpack/webpack/issues/177
-					{
-						test: /sinon\.js/,
-						loader: 'imports?define=>false,require=>false'
-					},
-
-					// Perform babel transpiling on all non-source, test files.
-					{
-						test: /\.js$/,
-						exclude: /node_modules/,
-						loader: 'babel-loader'
-					},
-					// This allows the test setup scripts to load `package.json`
-					{
-						test: /\.json$/,
-						exclude: /node_modules/,
-						loader: 'json-loader'
-					}
-				]
-			},
-			plugins: [
-				// By default, webpack does `n=>n` compilation with entry files. This concatenates
-				// them into a single chunk.
-				new webpack.optimize.LimitChunkCountPlugin({
-					maxChunks: 1
-				})
-			],
-			devtool: 'inline-source-map'
-		}, null, function() {
-			if (firstBuild) {
-				$.livereload.listen({
-					port: 35729,
-					host: 'localhost',
-					start: true
-				});
-			} else {
-				$.livereload.reload('./tmp/__spec-build.js');
-			}
-			firstBuild = false;
-		}))
-		.pipe(gulp.dest('./tmp'));
-}
-
-const entry = path.resolve('src/index.js');
-
 function bundle(format) {
 	return rollup({
-		entry: entry,
+		entry: path.resolve('src/index.js'),
 		sourceMap: true,
 		banner: copyright,
 		plugins: [
@@ -330,6 +230,9 @@ function jsES2015Dist() {
 		.then(jsES2015)
 }
 
+// ------------------
+// CI tests suites
+
 function unit(done) {
 	env.NODE_ENV = 'test';
 
@@ -445,22 +348,104 @@ gulp.task('lint', ['lint-src', 'lint-test']);
 gulp.task('test', ['lint'], runServerTests);
 
 // Set up coverage and run tests
-gulp.task('coverage', runCoverage);
+gulp.task('coverage', (done) => {
+		require('babel-register');
+		gulp.src(['./src/**/*.js'])
+			.pipe($.istanbul({
+				instrumenter: Instrumenter
+			}))
+			.pipe($.istanbul.hookRequire())
+			.pipe(coveralls())
+			.on('finish', () => {
+				return gulp.src(['config/setup/node.js', 'specs/**/*spec.browser.js'], {
+						read: false
+					})
+					.pipe($.mocha({
+						reporter: 'spec',
+						ui: 'bdd',
+						timeout: 15000,
+						globals: Object.keys(mochaGlobals),
+						ignoreLeaks: false
+					}))
+					.pipe($.istanbul.writeReports())
+					.on('end', done);
+			});
+	}
+);
 
 // Set up a livereload environment for our spec runner `test/runner.html`
-gulp.task('browser', ['clean:tmp'], testBrowser);
+gulp.task('browser', ['clean:tmp'], () => {
+	// Our testing bundle is made up of our unit tests, which
+	// should individually load up pieces of our application.
+	// We also include the browser setup file.
+	const testFiles = glob.sync('./specs/**/*spec.browser.js')
+		.concat(glob.sync('./specs/**/*spec.server.js'));
+	const allFiles = ['./config/setup/browser.js'].concat(testFiles);
 
-// Run the headless unit tests as you make changes.
-gulp.task('watch', watch);
+	// Lets us differentiate between the first build and subsequent builds
+	let firstBuild = true;
+
+	// This empty stream might seem like a hack, but we need to specify all of our files through
+	// the `entry` option of webpack. Otherwise, it ignores whatever file(s) are placed in here.
+	return gulp.src('')
+		.pipe($.plumber())
+		.pipe(webpackStream({
+			watch: true,
+			entry: allFiles,
+			output: {
+				filename: '__spec-build.js'
+			},
+			module: {
+				loaders: [
+					// Use imports loader to hack webpacking sinon.
+					// https://github.com/webpack/webpack/issues/177
+					{
+						test: /sinon\.js/,
+						loader: 'imports?define=>false,require=>false'
+					},
+
+					// Perform babel transpiling on all non-source, test files.
+					{
+						test: /\.js$/,
+						exclude: /node_modules/,
+						loader: 'babel-loader'
+					},
+					// This allows the test setup scripts to load `package.json`
+					{
+						test: /\.json$/,
+						exclude: /node_modules/,
+						loader: 'json-loader'
+					}
+				]
+			},
+			plugins: [
+				// By default, webpack does `n=>n` compilation with entry files. This concatenates
+				// them into a single chunk.
+				new webpack.optimize.LimitChunkCountPlugin({
+					maxChunks: 1
+				})
+			],
+			devtool: 'inline-source-map'
+		}, null, function() {
+			if (firstBuild) {
+				$.livereload.listen({
+					port: 35729,
+					host: 'localhost',
+					start: true
+				});
+			} else {
+				$.livereload.reload('./tmp/__spec-build.js');
+			}
+			firstBuild = false;
+		}))
+		.pipe(gulp.dest('./tmp'));
+});
 
 // An alias of test
 gulp.task('default', ['test']);
 
 // clean
 gulp.task('clean', clean);
-
-// Run all unit tests for both Chrome and Firefox
-gulp.task('unit', unit);
 
 // Run all unit tests for server
 gulp.task('test:server', runServerTests);
@@ -486,7 +471,10 @@ gulp.task('watch:phantom', PhantomWatch);
 // Run all unit tests for browser & watch files for changes with Firefox
 gulp.task('watch:firefox', FirefoxWatch);
 
-gulp.task('watch:server', watch);
+// Run the headless unit tests as you make changes.
+gulp.task('watch:server',() => {
+	gulp.watch(['src/**/*', './specs/**/*spec.browser.js', './specs/**/*spec.server.js', 'package.json', '**/.eslintrc'], ['test']);
+});
 
 // Build a production bundle
 gulp.task('build:prod', minify);

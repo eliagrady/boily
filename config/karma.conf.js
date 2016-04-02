@@ -14,11 +14,10 @@ module.exports = function(config, specificOptions) {
 			'chai',
 			'mocha'
 		],
-
 		// list of files / patterns to load in the browser
 		files: [
 			'../specs/**/*spec.browser.js',
-			'../specs/**/*spec.server.js'
+			'../specs/**/*spec.server.js',
 		],
 		// list of files to exclude
 		exclude: [],

@@ -1,22 +1,20 @@
-module.exports = function(root) {
-  root = root ? root : global;
-  root.expect = root.chai.expect;
+module.exports = function(runner) {
+  runner = runner ? runner : global;
+  runner.expect = runner.chai.expect;
 
   beforeEach(function() {
-    // Using these globally-available Sinon features is preferrable, as they're
-    // automatically restored for you in the subsequent `afterEach`
-    root.sandbox = root.sinon.sandbox.create();
-    root.stub = root.sandbox.stub.bind(root.sandbox);
-    root.spy = root.sandbox.spy.bind(root.sandbox);
-    root.mock = root.sandbox.mock.bind(root.sandbox);
-    root.useFakeTimers = root.sandbox.useFakeTimers.bind(root.sandbox);
-    root.useFakeXMLHttpRequest = root.sandbox.useFakeXMLHttpRequest.bind(root.sandbox);
-    root.useFakeServer = root.sandbox.useFakeServer.bind(root.sandbox);
+    runner.sandbox = runner.sinon.sandbox.create();
+    runner.stub = runner.sandbox.stub.bind(runner.sandbox);
+    runner.spy = runner.sandbox.spy.bind(runner.sandbox);
+    runner.mock = runner.sandbox.mock.bind(runner.sandbox);
+    runner.useFakeTimers = runner.sandbox.useFakeTimers.bind(runner.sandbox);
+    runner.useFakeXMLHttpRequest = runner.sandbox.useFakeXMLHttpRequest.bind(runner.sandbox);
+    runner.useFakeServer = runner.sandbox.useFakeServer.bind(runner.sandbox);
   });
 
   afterEach(function() {
-    delete root.stub;
-    delete root.spy;
-    root.sandbox.restore();
+    delete runner.stub;
+    delete runner.spy;
+    runner.sandbox.restore();
   });
 };
