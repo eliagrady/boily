@@ -1,29 +1,29 @@
 {
   "name": "boily",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
     "clean": "rimraf coverage/ dist/",
     "test": "npm run test:browser && npm run test:server && npm run coverage",
     "test:server": "gulp test:server",
+    "test:browser": "karma start config/karma.conf.js --no-auto-watch",
     "browser": "gulp browser",
     "watch": "gulp watch",
-    "build": "npm run build:dev && npm run build:prod",
-    "build:dev": "gulp build:dev",
-    "build:prod": "gulp build:prod",
+    "build": "npm run clean && mkdirp dist && npm run build:dev && npm run build:prod",
+    "build:dev": "cross-env NODE_ENV=development gulp build:dev",
+    "build:prod": "cross-env NODE_ENV=production gulp build:prod",
     "build:common": "gulp build:common",
-    "build:es6": "gulp build:es6",
-    "build:closure": "gulp build:closure",
+    "build:es6": "cross-env NODE_ENV=development gulp build:es6",
+    "build:closure": "cross-env NODE_ENV=development gulp build:closure",
     "build:all": "gulp build:all",
     "coverage": "gulp coverage",
-    "test:browser": "karma start config/karma.conf.js --no-auto-watch",
     "karma:phantom": "gulp KarmaPhantomJS",
     "karma:chrome": "gulp KarmaChrome",
     "karma:firefox": "gulp KarmaFirefox",
     "karma:ie": "karma start config/karma.conf.js --single-run --no-auto-watch --browsers=IE",
     "lint": "npm run lint:source && npm run lint:tests",
-    "lint:tests": "eslint ./src/**/*__tests__*/**/*.js",
+    "lint:tests": "eslint ./specs/**/*.js",
     "lint:source": "eslint src",
     "lint:gulp": "gulp lint:gulp",
     "watch:server": "gulp watch:server",
@@ -42,7 +42,10 @@
     "type": "git",
     "url": "git@github.com:kflash/boily"
   },
-  "author": "Kenny F.",
+  "author": {
+    "name": "KFlash",
+    "email": "kflash123@gmail.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kflash123/boily/issues"
@@ -151,7 +154,14 @@
     "del": "^2.2.0",
     "rimraf": "^2.5.2",
     "npm-check-updates": "^2.6.1",
-    "cross-env": "1.0.7",
-    "dotenv": "^2.0.0"
+    "cross-env": "1.0.7"
+  },
+  "pre-commit": [
+    "test",
+    "lint:source"
+  ],
+  "engines": {
+    "node": ">= 5.4.1 < 6",
+    "npm": "~3.0"
   }
 }

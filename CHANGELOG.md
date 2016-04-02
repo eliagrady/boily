@@ -1,3 +1,7 @@
+# v.3.1.1
+
+- fixed minor issues
+- improved build process
 
 # v.3.0.9
 - fixed coverage report issues

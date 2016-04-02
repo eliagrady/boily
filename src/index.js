@@ -8,9 +8,4 @@ boily.version = 'VERSION';
 
  boily.flow = foo;
 
-// Only for development mode
-if ( process.env.NODE_ENV !== 'production' ) {
-	boily.dev = '123';
-}
-
 export default boily;

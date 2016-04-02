@@ -46,7 +46,7 @@ module.exports = {
 		'jsx-quotes': [ERROR, 'prefer-double'],
 		'no-cond-assign': [ERROR, 'except-parens'],
 		'no-console': 0,
-		'no-constant-condition': ERROR,
+		'no-constant-condition': OFF,
 		'no-debugger': WARNING,
 		'no-bitwise': OFF,
 		'no-multi-spaces': ERROR,

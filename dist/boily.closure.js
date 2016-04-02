@@ -1,6 +1,6 @@
 /*!
- * boily v3.0.8
- * (c) 2016 Kenny F.
+ * boily v3.1.1
+ * (c) 2016 KFlash
  * Released under the MIT License.
  */
 goog.module('boily');

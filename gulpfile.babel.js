@@ -18,7 +18,6 @@ import typescript from 'rollup-plugin-typescript';
 import stub from 'rollup-plugin-stub';
 import eslint from 'rollup-plugin-eslint';
 import nodeResolve from 'rollup-plugin-node-resolve';
-import karma from 'karma';
 import replace from 'gulp-replace';
 import sourcemaps from 'gulp-sourcemaps';
 import coveralls from 'gulp-coveralls';
@@ -38,27 +37,23 @@ const karmaConfig = path.resolve('config/karma.conf.js');
 const copyright =
 	'/*!\n' +
 	' * ' + pack.name + ' v' + pack.version + '\n' +
-	' * (c) ' + new Date().getFullYear() + ' ' + pack.author + '\n' +
+	' * (c) ' + new Date().getFullYear() + ' ' + pack.author.name + '\n' +
 	' * Released under the ' + pack.license + ' License.\n' +
 	' */';
 
 const mochaGlobals = {
-	'expect': true,
-	'mock': true,
-	'sandbox': true,
-	'spy': true,
-	'stub': true,
-	'useFakeServer': true,
-	'useFakeTimers': true,
-	'useFakeXMLHttpRequest': true
+	expect: true,
+	mock: true,
+	sandbox: true,
+	spy: true,
+	stub: true,
+	useFakeServer: true,
+	useFakeTimers: true,
+	useFakeXMLHttpRequest: true
 };
 
 function clean() {
 	return del(['dist/']);
-}
-
-function onError() {
-	$.util.beep();
 }
 
 // Lint a set of files
@@ -68,7 +63,9 @@ function lint(files) {
 		.pipe($.eslint())
 		.pipe($.eslint.format())
 		.pipe($.eslint.failOnError())
-		.on('error', onError);
+		.on('error', () => {
+			$.util.beep();
+		});
 }
 
 // run server tests
@@ -236,7 +233,7 @@ function jsES2015Dist() {
 function unit(done) {
 	env.NODE_ENV = 'test';
 
-	new karma.Server({
+	new $.karma.Server({
 		configFile: karmaConfig,
 		singleRun: true,
 		browsers: ['Chrome', 'Firefox']
@@ -246,7 +243,7 @@ function unit(done) {
 function KarmaFirefox(done) {
 	env.NODE_ENV = 'test';
 
-	new karma.Server({
+	new $.karma.Server({
 		configFile: karmaConfig,
 		singleRun: true,
 		browsers: ['Firefox']
@@ -256,7 +253,7 @@ function KarmaFirefox(done) {
 function KarmaChrome(done) {
 	env.NODE_ENV = 'test';
 
-	new karma.Server({
+	new $.karma.Server({
 		configFile: karmaConfig,
 		singleRun: true,
 		browsers: ['Chrome']
@@ -266,7 +263,7 @@ function KarmaChrome(done) {
 function KarmaPhantomJS(done) {
 	env.NODE_ENV = 'test';
 
-	new karma.Server({
+	new $.karma.Server({
 		configFile: karmaConfig,
 		singleRun: true,
 		browsers: ['PhantomJS']
@@ -276,7 +273,7 @@ function KarmaPhantomJS(done) {
 function ChromeWatch(done) {
 	env.NODE_ENV = 'test';
 
-	new karma.Server({
+	new $.karma.Server({
 		configFile: karmaConfig,
 		singleRun: false,
 		browsers: ['Chrome']
@@ -286,7 +283,7 @@ function ChromeWatch(done) {
 function FirefoxWatch(done) {
 	env.NODE_ENV = 'test';
 
-	new karma.Server({
+	new $.karma.Server({
 		configFile: karmaConfig,
 		singleRun: false,
 		browsers: ['Firefox']
@@ -296,7 +293,7 @@ function FirefoxWatch(done) {
 function PhantomWatch(done) {
 	env.NODE_ENV = 'test';
 
-	new karma.Server({
+	new $.karma.Server({
 		configFile: karmaConfig,
 		singleRun: false,
 		browsers: ['PhantomJS']
@@ -441,17 +438,14 @@ gulp.task('browser', ['clean:tmp'], () => {
 		.pipe(gulp.dest('./tmp'));
 });
 
-// An alias of test
-gulp.task('default', ['test']);
+// Build development and minified bundle
+gulp.task('default', ['build:dev'], minify);
 
 // clean
 gulp.task('clean', clean);
 
 // Run all unit tests for server
 gulp.task('test:server', runServerTests);
-
-// Run all unit tests
-gulp.task('test', ['unit'], runServerTests);
 
 // Run Karma with PhantomJS browser
 gulp.task('KarmaPhantomJS', KarmaPhantomJS);
