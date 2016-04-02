@@ -1,4 +1,4 @@
-import boily from '../../src';
+import boily from '../src/index';
 
 describe( 'General boily tests', () => {
 

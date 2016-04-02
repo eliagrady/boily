@@ -1,5 +1,5 @@
 /*!
- * boily v3.0.7
+ * boily v3.0.8
  * (c) 2016 Kenny F.
  * Released under the MIT License.
  */
@@ -12,11 +12,6 @@ boily.version = 'VERSION';
 function foo(one, two, three) {}
 
 boily.flow = foo;
-
-// Only for development mode
-if ('development' !== 'production') {
-  boily.dev = '123';
-}
 
 export default boily;
 

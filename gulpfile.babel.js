@@ -70,33 +70,8 @@ function lint(files) {
 		.on('error', onError);
 }
 
-function _mocha() {
-	return gulp.src(['config/setup/node.js', 'src/**/*.js', './src/**/*__tests__*/**/*spec.server.js'], {
-			read: false
-		})
-		.pipe($.mocha({
-			reporter: 'spec',
-			ui: 'bdd',
-			timeout: 15000,
-			globals: Object.keys(mochaGlobals),
-			ignoreLeaks: false
-		}));
-}
-
-function _registerBabel() {
+function runCoverage(done) {
 	require('babel-register');
-}
-
-function test() {
-	_registerBabel();
-	return _mocha();
-}
-
-
-
-
-function coverage(done) {
-	_registerBabel();
 	gulp.src(['./src/**/*.js'])
 		.pipe($.istanbul({
 			instrumenter: Instrumenter
@@ -104,7 +79,16 @@ function coverage(done) {
 		.pipe($.istanbul.hookRequire())
 		.pipe(coveralls())
 		.on('finish', () => {
-			return test()
+			return gulp.src(['config/setup/node.js', 'specs/**/*spec.browser.js'], {
+					read: false
+				})
+				.pipe($.mocha({
+					reporter: 'spec',
+					ui: 'bdd',
+					timeout: 15000,
+					globals: Object.keys(mochaGlobals),
+					ignoreLeaks: false
+				}))
 				.pipe($.istanbul.writeReports())
 				.on('end', done);
 		});
@@ -113,8 +97,8 @@ function coverage(done) {
 
 // run server tests
 function runServerTests() {
-	_registerBabel();
-	return gulp.src(['config/setup/node.js', './src/**/*__tests__*/**/*spec.server.js'], {
+	require('babel-register');
+	return gulp.src(['config/setup/node.js', './specs/**/*spec.server.js'], {
 			read: false
 		})
 		.pipe($.mocha({
@@ -126,7 +110,7 @@ function runServerTests() {
 		}));
 }
 
-const watchFiles = ['src/**/*', './src/**/*__tests__*/**/*spec.browser.js', './src/**/*__tests__*/**/*spec.server.js', 'package.json', '**/.eslintrc'];
+const watchFiles = ['src/**/*', './specs/**/*spec.browser.js', './specs/**/*spec.server.js', 'package.json', '**/.eslintrc'];
 
 // Run the headless unit tests as you make changes.
 function watch() {
@@ -137,8 +121,8 @@ function testBrowser() {
 	// Our testing bundle is made up of our unit tests, which
 	// should individually load up pieces of our application.
 	// We also include the browser setup file.
-	const testFiles = glob.sync('./src/**/*__tests__*/**/*spec.browser.js')
-		.concat(glob.sync('./src/**/*__tests__*/**/*spec.server.js'));
+	const testFiles = glob.sync('./specs/**/*spec.browser.js')
+		.concat(glob.sync('./specs/**/*spec.server.js'));
 	const allFiles = ['./config/setup/browser.js'].concat(testFiles);
 
 	// Lets us differentiate between the first build and subsequent builds
@@ -417,8 +401,6 @@ function PhantomWatch(done) {
 }
 
 function js() {
-	env.NODE_ENV = 'development';
-	env.min = false;
 
 	return bundle('umd')
 		.pipe(source(artifactName + '.js'))
@@ -428,18 +410,18 @@ function js() {
 		.pipe(gulp.dest('dist'));
 }
 
-
+// Build all
 function buildAll() {
-	// These must be run serially: clean must complete before any of the js
-	// targets run. The js and jsMin targets cannot run in parallel as they both
-	// change process.env.NODE_ENV. The CommonJS target could run in parallel
-	// with the js and jsMin targets, but currently is not.
+
+	env.NODE_ENV = 'development';
+	env.min = false;
+
 	return clean()
 		.then(jsCommonJS)
 		.then(jsES2015Dist)
 		.then(jsClosure)
 		.then(js)
-		.then(jsMin);
+		.then(minify);
 }
 
 // Remove our temporary files
@@ -459,14 +441,11 @@ gulp.task('lint:gulp', () => lint('gulpfile.babel.js'));
 // Lint everything
 gulp.task('lint', ['lint-src', 'lint-test']);
 
-// Build two versions of the library
-// gulp.task('build', ['lint', 'clean'], js);
-
 // Lint and run our tests
-gulp.task('test', ['lint'], test);
+gulp.task('test', ['lint'], runServerTests);
 
 // Set up coverage and run tests
-gulp.task('coverage', coverage);
+gulp.task('coverage', runCoverage);
 
 // Set up a livereload environment for our spec runner `test/runner.html`
 gulp.task('browser', ['clean:tmp'], testBrowser);
@@ -487,7 +466,7 @@ gulp.task('unit', unit);
 gulp.task('test:server', runServerTests);
 
 // Run all unit tests
-gulp.task('test', ['unit'], test);
+gulp.task('test', ['unit'], runServerTests);
 
 // Run Karma with PhantomJS browser
 gulp.task('KarmaPhantomJS', KarmaPhantomJS);

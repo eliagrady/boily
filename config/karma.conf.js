@@ -17,16 +17,16 @@ module.exports = function(config, specificOptions) {
 
 		// list of files / patterns to load in the browser
 		files: [
-			'../src/**/*__tests__*/**/*spec.browser.js',
-			'../src/**/*__tests__*/**/*spec.server.js'
+			'../specs/**/*spec.browser.js',
+			'../specs/**/*spec.server.js'
 		],
 		// list of files to exclude
 		exclude: [],
 		// preprocess matching files before serving them to the browser
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors: {
-			'../src/**/*__tests__*/**/*spec.server.js': ['webpack', 'sourcemap'],
-			'../src/**/*__tests__*/**/*spec.browser.js': ['webpack', 'sourcemap']
+			'../specs/**/*spec.server.js': ['webpack', 'sourcemap'],
+			'../specs/**/*spec.browser.js': ['webpack', 'sourcemap']
 		},
 		webpack: {
 			cache: true,

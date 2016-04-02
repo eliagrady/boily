@@ -1,5 +1,5 @@
 /*!
- * boily v3.0.7
+ * boily v3.0.8
  * (c) 2016 Kenny F.
  * Released under the MIT License.
  */

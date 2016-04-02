@@ -6,7 +6,7 @@
 import {
 	BatClass,
 	__RewireAPI__ as BatClassRewireAPI
-} from '../BatClass';
+} from '../src/BatClass';
 
 
 describe('BatClass - server and browser tests', () => {
