@@ -1,6 +1,5 @@
 
-# ONGOING RE-FACTORING!!
-
+# RE-FACTORING IN PROGRESSS!!
 
 
 # ES2015 boilerplate for creating libraries with the newest front-end technologies.
