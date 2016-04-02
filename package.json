@@ -1,6 +1,6 @@
 {
   "name": "boily",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
@@ -48,9 +48,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kflash123/boily/issues"
+    "url": "https://github.com/kflash/boily/issues"
   },
-  "homepage": "https://github.com/kflash123/boily",
+  "homepage": "https://github.com/kflash/boily",
   "jsnext:main": "src/index.js",
   "keywords": [
     "boilerplate",
