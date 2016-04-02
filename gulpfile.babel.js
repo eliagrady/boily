@@ -41,6 +41,17 @@ const copyright =
 	' * Released under the ' + pack.license + ' License.\n' +
 	' */';
 
+const mochaGlobals = {
+	'expect': true,
+	'mock': true,
+	'sandbox': true,
+	'spy': true,
+	'stub': true,
+	'useFakeServer': true,
+	'useFakeTimers': true,
+	'useFakeXMLHttpRequest': true
+};
+
 function clean() {
 	return del(['dist/']);
 }
@@ -67,16 +78,7 @@ function _mocha() {
 			reporter: 'spec',
 			ui: 'bdd',
 			timeout: 15000,
-			globals: Object.keys({
-				'expect': true,
-				'mock': true,
-				'sandbox': true,
-				'spy': true,
-				'stub': true,
-				'useFakeServer': true,
-				'useFakeTimers': true,
-				'useFakeXMLHttpRequest': true
-			}),
+			globals: Object.keys(mochaGlobals),
 			ignoreLeaks: false
 		}));
 }
@@ -89,6 +91,9 @@ function test() {
 	_registerBabel();
 	return _mocha();
 }
+
+
+
 
 function coverage(done) {
 	_registerBabel();
@@ -103,6 +108,22 @@ function coverage(done) {
 				.pipe($.istanbul.writeReports())
 				.on('end', done);
 		});
+}
+
+
+// run server tests
+function runServerTests() {
+	_registerBabel();
+	return gulp.src(['config/setup/node.js', './src/**/*__tests__*/**/*spec.server.js'], {
+			read: false
+		})
+		.pipe($.mocha({
+			reporter: 'spec',
+			ui: 'bdd',
+			timeout: 15000,
+			globals: Object.keys(mochaGlobals),
+			ignoreLeaks: false
+		}));
 }
 
 const watchFiles = ['src/**/*', './src/**/*__tests__*/**/*spec.browser.js', './src/**/*__tests__*/**/*spec.server.js', 'package.json', '**/.eslintrc'];
@@ -463,7 +484,7 @@ gulp.task('clean', clean);
 gulp.task('unit', unit);
 
 // Run all unit tests for server
-gulp.task('test:server', test);
+gulp.task('test:server', runServerTests);
 
 // Run all unit tests
 gulp.task('test', ['unit'], test);
