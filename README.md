@@ -1,8 +1,15 @@
 
-# RE-FACTORING IN PROGRESSS!!
+# MAJOR RE-FACTORING IN PROGRESS!!
 
 
-# ES2015 boilerplate for creating libraries with the newest front-end technologies.
+
+
+
+
+
+
+
+### ES2015 boilerplate for creating libraries with the newest front-end technologies.
 
 [![Build Status](https://travis-ci.org/Kflash/boily.svg?branch=master)](https://travis-ci.org/Kflash/boily)
 [![Coverage Status](https://coveralls.io/repos/github/Kflash/boily/badge.svg?branch=master)](https://coveralls.io/github/Kflash/boily?branch=master)
