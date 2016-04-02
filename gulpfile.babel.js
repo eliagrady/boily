@@ -65,6 +65,8 @@ function _mocha() {
 		})
 		.pipe($.mocha({
 			reporter: 'spec',
+			ui: 'bdd',
+			timeout: 15000,
 			globals: Object.keys({
 				'expect': true,
 				'mock': true,
