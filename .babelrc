@@ -1,15 +1,20 @@
 {
-    'presets': [
-        'es2015'
+    "presets": [
+        "es2015-loose"
     ],
-    'plugins': [
-        'transform-object-rest-spread',
-        'transform-flow-strip-types',
-        'syntax-flow',
-        'transform-remove-debugger',
-        'transform-remove-console',
-        'transform-undefined-to-void',
+    "plugins": [
+        "transform-object-rest-spread",
+        "transform-flow-strip-types",
+        "syntax-flow",
+        "transform-remove-debugger",
+        "transform-remove-console",
+        "transform-undefined-to-void",
         'babel-plugin-rewire',
-        'check-es2015-constants'
-    ]
+         "check-es2015-constants"
+    ],
+    "env": {
+      "test": {
+        "plugins": ["rewire"]
+      }
+    }
 }

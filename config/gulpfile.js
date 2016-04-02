@@ -3,7 +3,7 @@ import loadPlugins from 'gulp-load-plugins';
 import del from 'del';
 import glob from 'glob';
 import path from 'path';
-import { Instrumenter } from 'isparta';
+import {Instrumenter} from 'isparta';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
 import source from 'vinyl-source-stream';
@@ -21,12 +21,12 @@ import karma from 'karma';
 import replace from 'gulp-replace';
 import sourcemaps from 'gulp-sourcemaps';
 import coveralls from 'gulp-coveralls';
-import taskListing from 'gulp-task-listing';
 
 // Load all of our Gulp plugins
 const $ = loadPlugins();
 
 const env = process.env;
+const entryFileName = 'src/index.js';
 const artifactName = 'boily';
 const googModuleName = 'boily';
 const karmaConfig = path.resolve('config/karma.conf.js');
@@ -45,6 +45,10 @@ function clean() {
 	return del(['dist/']);
 }
 
+function cleanTmp(done) {
+	del(['tmp']).then(() => done());
+}
+
 function onError() {
 	$.util.beep();
 }
@@ -59,22 +63,33 @@ function lint(files) {
 		.on('error', onError);
 }
 
+function lintSrc() {
+	return lint('src/**/*.js');
+}
+
+function lintTest() {
+	return lint('src/**/*__tests__*/**/*.js');
+}
+
+function lintGulpfile() {
+	return lint('gulpfile.babel.js');
+}
+
 function _mocha() {
-	return gulp.src(['config/setup/node.js', 'src/**/*.js', './src/**/*__tests__*/**/*spec.server.js'], {
-			read: false
-		})
+	return gulp.src(['config/setup/node.js', 'src/**/*.js', './src/**/*__tests__*/**/*spec.server.js'], {read: false})
 		.pipe($.mocha({
 			reporter: 'spec',
 			globals: Object.keys({
-				'expect': true,
-				'mock': true,
-				'sandbox': true,
-				'spy': true,
-				'stub': true,
-				'useFakeServer': true,
-				'useFakeTimers': true,
-				'useFakeXMLHttpRequest': true
-			}),
+					'expect': true,
+					'mock': true,
+					'sandbox': true,
+					'spy': true,
+					'stub': true,
+					'useFakeServer': true,
+					'useFakeTimers': true,
+					'useFakeXMLHttpRequest': true
+				}
+			),
 			ignoreLeaks: false
 		}));
 }
@@ -91,9 +106,7 @@ function test() {
 function coverage(done) {
 	_registerBabel();
 	gulp.src(['./src/**/*.js'])
-		.pipe($.istanbul({
-			instrumenter: Instrumenter
-		}))
+		.pipe($.istanbul({ instrumenter: Instrumenter }))
 		.pipe($.istanbul.hookRequire())
 		.pipe(coveralls())
 		.on('finish', () => {
@@ -114,6 +127,7 @@ function testBrowser() {
 	// Our testing bundle is made up of our unit tests, which
 	// should individually load up pieces of our application.
 	// We also include the browser setup file.
+	//const testFiles = glob.sync('./test/unit/**/*.js');
 	const testFiles = glob.sync('./src/**/*__tests__*/**/*spec.browser.js')
 		.concat(glob.sync('./src/**/*__tests__*/**/*spec.server.js'));
 	const allFiles = ['./config/setup/browser.js'].concat(testFiles);
@@ -133,42 +147,22 @@ function testBrowser() {
 			},
 			module: {
 				loaders: [
-					// Use imports loader to hack webpacking sinon.
-					// https://github.com/webpack/webpack/issues/177
-					{
-						test: /sinon\.js/,
-						loader: 'imports?define=>false,require=>false'
-					},
-
-					// Perform babel transpiling on all non-source, test files.
-					{
-						test: /\.js$/,
-						exclude: /node_modules/,
-						loader: 'babel-loader'
-					},
+					// This is what allows us to author in future JavaScript
+					{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
 					// This allows the test setup scripts to load `package.json`
-					{
-						test: /\.json$/,
-						exclude: /node_modules/,
-						loader: 'json-loader'
-					}
+					{ test: /\.json$/, exclude: /node_modules/, loader: 'json-loader' }
 				]
 			},
 			plugins: [
 				// By default, webpack does `n=>n` compilation with entry files. This concatenates
 				// them into a single chunk.
-				new webpack.optimize.LimitChunkCountPlugin({
-					maxChunks: 1
-				})
+				new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 })
 			],
 			devtool: 'inline-source-map'
 		}, null, function() {
 			if (firstBuild) {
-				$.livereload.listen({
-					port: 35729,
-					host: 'localhost',
-					start: true
-				});
+				$.livereload.listen({port: 35729, host: 'localhost', start: true});
+				const watcher = gulp.watch(watchFiles, ['lint']);
 			} else {
 				$.livereload.reload('./tmp/__spec-build.js');
 			}
@@ -203,14 +197,9 @@ function bundle(format) {
 				babelrc: false,
 				presets: 'es2015-rollup',
 				exclude: 'node_modules/**',
-				plugins: env.NODE_ENV ? [
-					'transform-flow-strip-types',
-					'syntax-flow',
-					'transform-remove-debugger',
-					'transform-remove-console',
-					'transform-undefined-to-void',
-					'transform-inline-environment-variables'
-				] : []
+				plugins: env.NODE_ENV ?
+					['transform-inline-environment-variables'] :
+					[]
 			}),
 			eslint(), // add your own Eslint configuration here
 			nodeResolve({
@@ -240,9 +229,7 @@ function build() {
 	return bundle('umd')
 		.pipe(source(artifactName + '.js'))
 		.pipe(buffer())
-		.pipe(sourcemaps.init({
-			loadMaps: true
-		}))
+		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('dist'));
 }
@@ -257,9 +244,7 @@ function minify() {
 	return bundle('umd')
 		.pipe(source(artifactName + '.min.js'))
 		.pipe(buffer())
-		.pipe(sourcemaps.init({
-			loadMaps: true
-		}))
+		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('dist'));
 }
@@ -275,9 +260,7 @@ function jsClosure(done) {
 	return bundle('cjs')
 		.pipe(source(artifactName + '-closure.js'))
 		.pipe(buffer())
-		.pipe(sourcemaps.init({
-			loadMaps: true
-		}))
+		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(replace(/('|")use strict\1;/, moduleDeclaration))
 		.pipe(replace("process.env.NODE_ENV !== 'production'", 'goog.DEBUG'))
 		.pipe(sourcemaps.write('.'))
@@ -294,9 +277,7 @@ function jsCommonJS() {
 	return bundle('cjs')
 		.pipe(source(artifactName + '.cjs.js'))
 		.pipe(buffer())
-		.pipe(sourcemaps.init({
-			loadMaps: true
-		}))
+		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('dist'));
 }
@@ -311,14 +292,16 @@ function jsES2015() {
 	return bundle('es6')
 		.pipe(source(artifactName + '.es2015.js'))
 		.pipe(buffer())
-		.pipe(sourcemaps.init({
-			loadMaps: true
-		}))
+		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('dist'));
 }
 
 function jsDist() {
+	// These must be run serially: clean must complete before any of the js
+	// targets run. The js and minify targets cannot run in parallel as they both
+	// change process.env.NODE_ENV. The CommonJS target could run in parallel
+	// with the js and minify targets, but currently is not.
 	return clean()
 		.then(jsCommonJS)
 		.then(js)
@@ -326,6 +309,10 @@ function jsDist() {
 }
 
 function jsES2015Dist() {
+	// These must be run serially: clean must complete before any of the js
+	// targets run. The js and minify targets cannot run in parallel as they both
+	// change process.env.NODE_ENV. The CommonJS target could run in parallel
+	// with the js and minify targets, but currently is not.
 	return clean()
 		.then(jsES2015)
 		.then(js)
@@ -339,7 +326,8 @@ function unit(done) {
 		configFile: karmaConfig,
 		singleRun: true,
 		browsers: ['Chrome', 'Firefox']
-	}, function(resultCode) {}).start();
+	}, function(resultCode) {
+	}).start();
 }
 
 function KarmaFirefox(done) {
@@ -349,7 +337,8 @@ function KarmaFirefox(done) {
 		configFile: karmaConfig,
 		singleRun: true,
 		browsers: ['Firefox']
-	}, function(resultCode) {}).start();
+	}, function(resultCode) {
+	}).start();
 }
 
 
@@ -360,7 +349,8 @@ function KarmaChrome(done) {
 		configFile: karmaConfig,
 		singleRun: true,
 		browsers: ['Chrome']
-	}, function(resultCode) {}).start();
+	}, function(resultCode) {
+	}).start();
 }
 
 function KarmaPhantomJS(done) {
@@ -370,7 +360,8 @@ function KarmaPhantomJS(done) {
 		configFile: karmaConfig,
 		singleRun: true,
 		browsers: ['PhantomJS']
-	}, function(resultCode) {}).start();
+	}, function(resultCode) {
+	}).start();
 }
 
 function ChromeWatch(done) {
@@ -380,7 +371,8 @@ function ChromeWatch(done) {
 		configFile: karmaConfig,
 		singleRun: false,
 		browsers: ['Chrome']
-	}, function(resultCode) {}).start();
+	}, function(resultCode) {
+	}).start();
 }
 
 function FirefoxWatch(done) {
@@ -390,7 +382,8 @@ function FirefoxWatch(done) {
 		configFile: karmaConfig,
 		singleRun: false,
 		browsers: ['Firefox']
-	}, function(resultCode) {}).start();
+	}, function(resultCode) {
+	}).start();
 }
 
 function PhantomWatch(done) {
@@ -400,34 +393,33 @@ function PhantomWatch(done) {
 		configFile: karmaConfig,
 		singleRun: false,
 		browsers: ['PhantomJS']
-	}, function(resultCode) {}).start();
+	}, function(resultCode) {
+	}).start();
 }
 
 // Remove our temporary files
-gulp.task('clean-tmp', (done) => {
-	del(['tmp']).then(() => done());
-});
+gulp.task('clean-tmp', cleanTmp);
 
 // Lint our source code
-gulp.task('lint:src', () => lint('src/**/*.js'));
+gulp.task('lint-src', lintSrc);
 
 // Lint our test code
-gulp.task('lint:test', () => lint('src/**/*__tests__*/**/*.js'));
+gulp.task('lint-test', lintTest);
 
 // Lint this file
-gulp.task('lint:gulp', () => lint('gulpfile.babel.js'));
+gulp.task('lint-gulpfile', lintGulpfile);
 
 // Lint everything
 gulp.task('lint', ['lint-src', 'lint-test']);
 
 // Build two versions of the library
-// gulp.task('build', ['lint', 'clean'], js);
+//gulp.task('build', ['lint', 'clean'], js);
 
 // Lint and run our tests
 gulp.task('test', ['lint'], test);
 
 // Set up coverage and run tests
-gulp.task('coverage', coverage);
+gulp.task('coverage',coverage);
 
 // Set up a livereload environment for our spec runner `test/runner.html`
 gulp.task('browser', ['clean-tmp'], testBrowser);
@@ -441,7 +433,7 @@ gulp.task('default', ['test']);
 // clean
 gulp.task('clean', clean);
 
-// Run all unit tests for both Chrome and Firefox
+// Run all unit tests for browser
 gulp.task('unit', unit);
 
 // Run all unit tests for server
@@ -484,6 +476,3 @@ gulp.task('build:es6', jsES2015Dist);
 
 // Build a closure bundle
 gulp.task('build:closure', jsClosure);
-
-// List all tasks
-gulp.task('help', taskListing.withFilters(/:/));

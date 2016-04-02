@@ -1,8 +1,7 @@
-# v.3.0.5
+# v.3.0.3
 
-- fixed issues where flow didn't work as expected
-- updated readme
-- general cleanup
+- minor fixes
+- 
 
 # v.3.0.0
 
