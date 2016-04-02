@@ -140,6 +140,22 @@ Download the package, and run this from the command line:
 npm install
 ```
 
+## Q&A
+
+### Why isn't rollup used as a preprocessor for Karma?
+
+Simply because Rollup doesn't support rewire. An there is no benefit in using it over Webpack. It could have solved an issue with Webpack and Karma, but the Istanbul plugin for rollup sucks big time. It's not a issue with the plugin itself.
+
+### Why use Gulp?
+
+Gulp is used to get the coverage report working cross-browser without issues.
+
+### Is this backward compatible with Boily 2.x
+
+Yes. Everything works the same.
+
+
+
 ## Known issues
 
 - Sourcemaps are not working for Karma tests, and the coverage reports outputs wrong info. This is not an issue with Boily.  
