@@ -1,5 +1,3 @@
 import gulp from 'gulp';
-
-gulp.task('default', ['setWatch', 'build'], () => {
-	gulp.start('server');
-});
+// Build development and minified bundle
+gulp.task('default', ['help']);

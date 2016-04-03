@@ -1,18 +1,12 @@
 import gulp from 'gulp';
 import eslint from 'gulp-eslint';
-import beep from 'gulp-util';
-import plumber from 'gulp-plumber';
 
 // Lint a set of files
 function lint(files) {
 	return gulp.src(files)
-		.pipe(plumber())
 		.pipe(eslint())
 		.pipe(eslint.format())
-		.pipe(eslint.failOnError())
-		.on('error', () => {
-			util.beep();
-		});
+		.pipe(eslint.failAfterError());
 }
 
 // Lint our source code

@@ -1,3 +1,7 @@
+# v.3.1.3
+
+- fixed gulp issues
+
 # v.3.1.1
 
 - fixed minor issues

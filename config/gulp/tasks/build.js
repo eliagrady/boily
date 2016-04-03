@@ -1,5 +1,6 @@
 import gulp from 'gulp';
 import path from 'path';
+import rimraf from 'rimraf';
 import source from 'vinyl-source-stream';
 import rollup from 'rollup-stream';
 import babel from 'rollup-plugin-babel';
@@ -27,6 +28,10 @@ const copyright =
 	' * (c) ' + new Date().getFullYear() + ' ' + pack.author.name + '\n' +
 	' * Released under the ' + pack.license + ' License.\n' +
 	' */';
+
+function clean() {
+	return del(['dist/']);
+}
 
 function bundle(format) {
 	return rollup({
