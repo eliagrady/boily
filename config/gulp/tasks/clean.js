@@ -1,7 +1,6 @@
 import gulp from 'gulp';
-import rimraf from 'rimraf';
-import { dest } from '../config';
+import del from 'del';
 
-gulp.task('clean', (done) => {
-	rimraf('dist/', done);
+gulp.task('clean', () => {
+	return del(['dist/']);
 });

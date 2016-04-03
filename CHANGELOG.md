@@ -1,3 +1,9 @@
+# v.3.1.5
+
+- refactored some of the gulp tasks
+- fixed a few gulp task issues
+
+
 # v.3.1.3
 
 - fixed gulp issues

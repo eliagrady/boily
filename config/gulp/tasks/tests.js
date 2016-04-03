@@ -1,17 +1,17 @@
 import gulp from 'gulp';
 import path from 'path';
-import karma from 'karma';
 import mocha from 'gulp-mocha';
+import {Server} from 'karma';
 import { mochaGlobals } from '../config';
 
 const karmaConfig = path.resolve('config/karma.conf.js');
 
-function startKarma(browser) {
-	new karma.Server({
+function startKarma(browser, factory) {
+	new Server({
 		configFile: karmaConfig,
 		singleRun: true,
 		browsers: [browser]
-	}, function(resultCode) {}).start();
+	}, factory).start();
 }
 
 // Run all unit tests for server
@@ -30,20 +30,20 @@ gulp.task('test:server', () => {
 });
 
 // Run Karma with PhantomJS browser
-gulp.task('karma:phantom', () => {
+gulp.task('karma:phantom', (done) => {
 	process.env.NODE_ENV = 'test';
-	startKarma('PhantomJS');
+	startKarma('PhantomJS', done);
 });
 
 // Run Karma with Chrome browser
-gulp.task('karma:chrome', () => {
+gulp.task('karma:chrome', (done) => {
 	process.env.NODE_ENV = 'test';
-	startKarma('Chrome');
+	startKarma('Chrome', done);
 });
 
 // Run Karma with Firefox browser
-gulp.task('karma:firefox', () => {
+gulp.task('karma:firefox', (done) => {
 		process.env.NODE_ENV = 'test';
-		startKarma('Firefox');
+		startKarma('Firefox', done);
 	}
 );

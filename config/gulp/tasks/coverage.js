@@ -11,6 +11,7 @@ gulp.task('coverage', (done) => {
 		require('babel-register');
 		gulp.src(['./src/**/*.js'])
 			.pipe(istanbul({
+				exclude: /node_modules|specs|dist/,
 				instrumenter: Instrumenter
 			}))
 			.pipe(istanbul.hookRequire())
@@ -21,7 +22,6 @@ gulp.task('coverage', (done) => {
 					})
 					.pipe(mocha({
 						reporter: 'spec',
-						ui: 'bdd',
 						timeout: 15000,
 						globals: Object.keys(mochaGlobals),
 						ignoreLeaks: false

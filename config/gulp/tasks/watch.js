@@ -14,19 +14,19 @@ function startKarma(browser) {
 }
 
 // Run all unit tests for browser & watch files for changes with Chrome
-gulp.task('watch:chrome', (done) => {
+gulp.task('watch:chrome', () => {
 	process.env.NODE_ENV = 'test';
 	startKarma('Chrome');
 });
 
 // Run all unit tests for browser & watch files for changes with PhantomJS
-gulp.task('watch:phantom', (done) => {
+gulp.task('watch:phantom', () => {
 	process.env.NODE_ENV = 'test';
 	startKarma('PhantomJS');
 });
 
 // Run all unit tests for browser & watch files for changes with Firefox
-gulp.task('watch:firefox', (done) => {
+gulp.task('watch:firefox', () => {
 	process.env.NODE_ENV = 'test';
 	startKarma('Firefox');
 });

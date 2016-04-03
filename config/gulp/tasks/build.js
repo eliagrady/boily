@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 import path from 'path';
-import rimraf from 'rimraf';
+import del from 'del';
 import source from 'vinyl-source-stream';
 import rollup from 'rollup-stream';
 import babel from 'rollup-plugin-babel';
@@ -154,7 +154,7 @@ gulp.task('build:es6', () => {
 );
 
 // Build a closure bundle
-gulp.task('build:closure', (done) => {
+gulp.task('build:closure', () => {
 	env.NODE_ENV = undefined;
 	env.min = false;
 	const moduleDeclaration = 'goog.module(\'' + googModuleName + '\');';
