@@ -16,11 +16,10 @@
     "build:common": "gulp build:common",
     "build:es6": "cross-env NODE_ENV=development gulp build:es6",
     "build:closure": "cross-env NODE_ENV=development gulp build:closure",
-    "build:all": "gulp build:all",
     "coverage": "gulp coverage",
-    "karma:phantom": "gulp KarmaPhantomJS",
-    "karma:chrome": "gulp KarmaChrome",
-    "karma:firefox": "gulp KarmaFirefox",
+    "karma:phantom": "gulp karma:phantom",
+    "karma:chrome": "gulp karma:chrome",
+    "karma:firefox": "gulp karma:firefox",
     "karma:ie": "karma start config/karma.conf.js --single-run --no-auto-watch --browsers=IE",
     "lint": "npm run lint:source && npm run lint:tests",
     "lint:tests": "eslint ./specs/**/*.js",
@@ -150,11 +149,11 @@
     "glob": "^7.0.3",
     "pre-commit": "^1.1.2",
     "mkdirp": "^0.5.1",
-    "npmlog": "^2.0.3",
     "del": "^2.2.0",
     "rimraf": "^2.5.2",
     "npm-check-updates": "^2.6.1",
-    "cross-env": "1.0.7"
+    "cross-env": "1.0.7",
+    "lolex": "^1.4.0"
   },
   "pre-commit": [
     "test",
