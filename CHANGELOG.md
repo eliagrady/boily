@@ -1,3 +1,9 @@
+# v.3.1.7
+
+- Fixed an issue where coverage wouldn't work on client side
+- added jsdom support
+- added fixtures. The fixtures can be used like this `this.setFixtures('<div></div>');` inside `beforeEach()`. They got teared down automatically
+
 # v.3.1.5
 
 - refactored some of the gulp tasks
