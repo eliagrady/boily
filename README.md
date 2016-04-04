@@ -137,8 +137,7 @@ This boilerplate uses a [pre-commit hook](https://www.npmjs.com/package/pre-comm
 
 ## jsDOM
 
-[jsdom](https://github.com/tmpvar/jsdom) are used to set up React.js components' testing harness under Node.js, based on the amazing jsdom. There are 
-[a few bugs](https://github.com/tmpvar/jsdom) related to React that is fixed with this boilerplate.
+[jsdom](https://github.com/tmpvar/jsdom) are used to set up React.js components' testing harness under Node.js, based on the amazing jsdom. Also [a couple of bugs](https://github.com/facebook/react/issues/5046) related to React is fixed.
 
 ## Linting
 
