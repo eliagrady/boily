@@ -5,6 +5,7 @@
   "main": "dist/boily.js",
   "scripts": {
     "clean": "rimraf coverage/ dist/",
+    "clean:coverage": "rimraf coverage/",
     "test": "npm run test:browser && npm run test:server && npm run coverage",
     "test:server": "gulp test:server",
     "test:browser": "karma start config/karma.conf.js --no-auto-watch",
@@ -35,6 +36,8 @@
     "package:reinstall": "npm run package:purge && npm install",
     "package:check": "ncu",
     "package:upgrade": "ncu -u",
+    "postversion": "git push && git push --tags && npm run clean:coverage",
+    "prepublish": "npm run clean:coverage && npm run build",
     "postpublish": "git push origin master --follow-tags"
   },
   "repository": {
