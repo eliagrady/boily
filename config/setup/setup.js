@@ -20,8 +20,8 @@ module.exports = function(runner) {
 	}
 
 	// clear fixutres after each 'run'
-	function clearFixturesfunction() {
-		$testDiv.innerHTML = "";
+	function clearFixtures() {
+		$testDiv.innerHTML = '';
 	}
 
 	beforeEach(function() {

@@ -1,3 +1,7 @@
+# v.3.1.8
+
+- Fixed fixture issues
+
 # v.3.1.7
 
 - Fixed an issue where coverage wouldn't work on client side

@@ -6,5 +6,7 @@ export const mochaGlobals = {
 	stub: true,
 	useFakeServer: true,
 	useFakeTimers: true,
-	useFakeXMLHttpRequest: true
+	useFakeXMLHttpRequest: true,
+	setFixtures: true,
+	clearFixtures: true
 };
