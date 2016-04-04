@@ -135,6 +135,11 @@ To reinstall all packages, do `npm run package:reinstall`, and to remove all pac
 
 This boilerplate uses a [pre-commit hook](https://www.npmjs.com/package/pre-commit) to ensure that your npm test (or other specified scripts) passes before you can commit your changes. This all conveniently configured in your package.json.
 
+## jsDOM
+
+[jsdom](https://github.com/tmpvar/jsdom) are used to set up React.js components' testing harness under Node.js, based on the amazing jsdom. There are 
+[a few bugs](https://github.com/tmpvar/jsdom) related to React that is fixed with this boilerplate.
+
 ## Linting
 
 ESLint are used to lint your source. To change the rules, edit the .eslintrc file in the root directory, respectively.
@@ -149,13 +154,14 @@ npm install
 
 ## Known issues
 
-- Sourcemaps are not working for Karma tests, and the coverage reports outputs wrong info. This is not an issue with Boily.  
+- There are know issues with sourcemaps and Karma where all coverage tools are report wrong line numbers and code coverage.  
 
 ## Q&A
 
 #### Why isn't rollup used as a preprocessor for Karma?
 
-Simply because Rollup doesn't support rewire. An there is no benefit in using it over Webpack. It could have solved an issue with Webpack and Karma, but the Istanbul plugin for rollup sucks big time. It's not a issue with the plugin itself.
+Simply because Rollup doesn't support rewire. And there is no benefit in using it over Webpack. It could have solved an issue with Webpack and Karma, but the Istanbul 
+plugin for rollup sucks big time. It's not a issue with the plugin itself.
 
 #### Why use Gulp?
 
@@ -169,7 +175,7 @@ Yes. Everything works the same.
 commonJS, ES6, UMD, and all other know formats.
 
 #### Is Google Closure supported?
-Yes.
+Yes. You can't compile it, but you can bundle your code to output a non-minified Google closure script.
 
 
 # License
