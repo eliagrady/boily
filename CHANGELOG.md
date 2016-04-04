@@ -1,3 +1,7 @@
+# v.3.1.9
+
+- Removed fixture support. Kept only jsDom
+
 # v.3.1.8
 
 - Fixed fixture issues
