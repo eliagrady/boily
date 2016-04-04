@@ -1,3 +1,8 @@
+# v.3.2.0
+
+- Fixed a issue where jsDOM failed for React
+- updated readme
+
 # v.3.1.9
 
 - Removed fixture support. Kept only jsDom
