@@ -1,6 +1,6 @@
 {
   "name": "boily",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
@@ -101,7 +101,7 @@
     "gulp-babel": "^6.1.2",
     "gulp-eslint": "^2.0.0",
     "gulp-filter": "^4.0.0",
-    "gulp-istanbul": "^0.10.3",
+    "gulp-istanbul": "^0.10.4",
     "gulp-livereload": "^3.8.1",
     "gulp-mocha": "^2.2.0",
     "gulp-plumber": "^1.1.0",
@@ -111,6 +111,7 @@
     "gulp-util": "^3.0.7",
     "gulp-coveralls": "^0.1.4",
     "gulp-task-listing": "^1.0.1",
+    "gulp-load-plugins": "^1.2.0",
     "eslint": "^2.7.0",
     "isparta": "^4.0.0",
     "json-loader": "^0.5.4",
