@@ -158,7 +158,7 @@
     "npm-check-updates": "^2.6.1",
     "cross-env": "1.0.7",
     "lolex": "^1.4.0",
-    "jsdom": "^8.3.0"
+    "jsdom": "^8.3.1"
   },
   "pre-commit": [
     "test",
