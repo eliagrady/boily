@@ -1,6 +1,6 @@
 {
   "name": "boily",
-  "version": "3.2.2",
+  "version": "3.2.3",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
@@ -76,11 +76,11 @@
     "modules"
   ],
   "devDependencies": {
-    "babel-cli": "^6.6.5",
+    "babel-cli": "^6.7.5",
     "babel-eslint": "^6.0.2",
     "babel-loader": "^6.2.4",
     "babel-register": "^6.7.2",
-    "babel-core": "^6.7.4",
+    "babel-core": "^6.7.6",
     "babel-plugin-rewire": "^1.0.0-rc-2",
     "babel-plugin-syntax-object-rest-spread": "^6.5.0-1",
     "babel-plugin-transform-object-rest-spread": "^6.6.5",
