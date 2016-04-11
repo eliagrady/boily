@@ -1,6 +1,6 @@
 {
   "name": "boily",
-  "version": "3.2.3",
+  "version": "3.2.4",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
@@ -149,7 +149,7 @@
     "rollup-plugin-stub": "^1.1.0",
     "rollup-stream": "^1.4.1",
     "webpack-stream": "^3.1.0",
-    "webpack": "^2.1.0-beta.4",
+    "webpack": "^2.1.0-beta.5",
     "glob": "^7.0.3",
     "pre-commit": "^1.1.2",
     "mkdirp": "^0.5.1",
