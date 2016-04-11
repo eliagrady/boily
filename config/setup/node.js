@@ -27,6 +27,7 @@ if (!global.document || !global.window) {
 	}
 
 	// take all properties of the window object and also attach it to the
+	// mocha global object
 	propagateToGlobal(win);
 
 // from mocha-jsdom https://github.com/rstacruz/mocha-jsdom/blob/master/index.js#L80
