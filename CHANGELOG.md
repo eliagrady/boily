@@ -1,3 +1,7 @@
+# v.3.2.4
+- refactored jsdom configuration
+- updated dependencies
+- 
 # v.3.2.0
 
 - Fixed a issue where jsDOM failed for React
