@@ -1,11 +1,9 @@
-<<<<<<< HEAD
-# v.3.2.6
+# v.3.2.7
 
 - simplified Travis
-=======
+
 # v.3.2.4
 - refactored jsdom configuration
->>>>>>> origin/master
 - updated dependencies
 
 # v.3.2.0
