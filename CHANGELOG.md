@@ -1,3 +1,8 @@
+# v.3.2.6
+
+- simplified Travis
+- updated dependencies
+
 # v.3.2.0
 
 - Fixed a issue where jsDOM failed for React
