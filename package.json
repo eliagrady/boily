@@ -1,6 +1,6 @@
 {
   "name": "boily",
-  "version": "3.2.8",
+  "version": "3.3.0",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
