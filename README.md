@@ -4,6 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/Kflash/boily/badge.svg?branch=master)](https://coveralls.io/github/Kflash/boily?branch=master)
 [![npm version](https://badge.fury.io/js/boily.svg)](https://badge.fury.io/js/boily)
 [![npm](https://img.shields.io/npm/l/express.svg?style=flat-square)](https://github.com/kflash/boily/blob/master/LICENSE.md)
+[![npm downloads](https://img.shields.io/npm/dm/boily.svg)](https://www.npmjs.org/package/boily)
 
 ## Features
 
