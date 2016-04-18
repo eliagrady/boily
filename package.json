@@ -1,6 +1,6 @@
 {
   "name": "boily",
-  "version": "3.3.1",
+  "version": "3.3.2",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
@@ -32,9 +32,9 @@
     "watch:chrome": "gulp watch:chrome",
     "watch:firefox": "gulp watch:firefox",
     "packages": "npm list --depth=0",
-    "package:purge": "rm -rf node_modules",
-    "package:reinstall": "npm run package:purge && npm install",
-    "package:check": "ncu",
+    "packages:purge": "rm -rf node_modules",
+    "packages:reinstall": "npm run packages:purge && npm install",
+    "packages:check": "ncu",
     "package:upgrade": "ncu -u",
     "postversion": "git push && git push --tags && npm run clean:coverage",
     "prepublish": "npm run clean:coverage && npm run build",
@@ -61,6 +61,7 @@
     "rewire",
     "karma",
     "mocha",
+    "preset",
     "workflow",
     "babel",
     "es6",

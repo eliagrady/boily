@@ -12,7 +12,8 @@ gulp.task('coverage', (done) => {
 		gulp.src(['./src/**/*.js'])
 			.pipe(istanbul({
 				exclude: /node_modules|specs|dist/,
-				instrumenter: Instrumenter
+				instrumenter: Instrumenter,
+                includeUntested: true
 			}))
 			.pipe(istanbul.hookRequire())
 			.pipe(coveralls())

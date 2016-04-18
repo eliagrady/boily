@@ -65,10 +65,10 @@ $ npm run build                 # Build a minified and a non-minified version of
 * `npm run watch:firefox` - Run all unit tests for browser with Firefox & watch files for changes
 * `npm run watch:phantom` - Run all unit tests for browser with PhantomJS & watch files for changes
 * `npm run packages` - List installed packages
-* `npm run package:purge` - Remove all dependencies
-* `npm run package:reinstall` - Reinstall all dependencies
-* `npm run package:check` - shows a list over dependencies with a higher version number then the current one - if any
-* `npm run package:upgrade` - Automaticly upgrade all devDependencies & dependencies, and update package.json
+* `npm run packages:purge` - Remove all dependencies
+* `npm run packages:reinstall` - Reinstall all dependencies
+* `npm run packages:check` - shows a list over dependencies with a higher version number then the current one - if any
+* `npm run packages:upgrade` - Automaticly upgrade all devDependencies & dependencies, and update package.json
 * `npm run browser` - runs browser unit tests in the browser. All of your unit tests get bundled automatically.
 
 ## Testing environment
