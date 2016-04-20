@@ -19,7 +19,7 @@ before_install:
 
 install:
   # Install version of npm that we are locked against
-  - npm install -g npm@3.8.7
+  - npm install -g npm@3
   # - npm config set registry http://23.251.144.68
   # Disable the spinner, it looks bad on Travis
   - npm config set spin false

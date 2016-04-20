@@ -1,6 +1,6 @@
 {
   "name": "boily",
-  "version": "3.3.2",
+  "version": "4.0.0",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
@@ -18,6 +18,7 @@
     "build:es6": "cross-env NODE_ENV=development gulp build:es6",
     "build:closure": "cross-env NODE_ENV=development gulp build:closure",
     "coverage": "gulp coverage",
+    "server:cov": "gulp coverage",
     "karma:phantom": "gulp karma:phantom",
     "karma:chrome": "gulp karma:chrome",
     "karma:firefox": "gulp karma:firefox",
@@ -29,8 +30,9 @@
     "watch:server": "gulp watch:server",
     "watch:browser": "karma start config/karma.conf.js --auto-watch --no-single-run",
     "watch:phantom": "gulp watch:phantom",
-    "watch:chrome": "gulp watch:chrome",
-    "watch:firefox": "gulp watch:firefox",
+    "watch:chrome": "./node_modules/.bin/karma start config/karma.conf.js --browsers=Chrome --auto-watch  --no-single-run",
+    "watch:firefox": "./node_modules/.bin/karma start config/karma.conf.js --browsers=Firefox --auto-watch  --no-single-run",
+    "watch:phantom": "./node_modules/.bin/karma start config/karma.conf.js --browsers=PhantomJS --auto-watch  --no-single-run",
     "packages": "npm list --depth=0",
     "packages:purge": "rm -rf node_modules",
     "packages:reinstall": "npm run packages:purge && npm install",

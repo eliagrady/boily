@@ -51,7 +51,7 @@ $ npm run build                 # Build a minified and a non-minified version of
 * `npm run lint:tests` - Lint the unit tests
 * `npm run lint:gulp` - Lint the gulp file
 * `npm run clean` - Remove the coverage report - and the *dist* folder
-* `npm run coverage` - Run Isparta, a code coverage tool
+* `npm run server:cov` - Run Isparta, a code coverage tool
 * `npm run test` - Runs unit tests for both server and the browser
 * `npm run test:browser` - Runs the unit tests for browser
 * `npm run test:server` - Runs the unit tests on the server
