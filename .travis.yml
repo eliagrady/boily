@@ -15,9 +15,6 @@ cache:
   directories:
     - node_modules
 addons:
-  # From some tests it seems you can only have one firefox addon.
-  # Adding two results in the last one defined being the one installed.
-  firefox: latest
   apt:
     sources:
       - google-chrome
