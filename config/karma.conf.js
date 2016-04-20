@@ -68,6 +68,12 @@ module.exports = function(config, specificOptions) {
 		},
 
 		browsers: ['Chrome'],
+        customLaunchers: {
+            Chrome_travis_ci: {
+                base: 'Chrome',
+                flags: ['--no-sandbox']
+            }
+        },
 		browserDisconnectTimeout: 10000,
 		browserDisconnectTolerance: 2,
 
@@ -94,7 +100,7 @@ module.exports = function(config, specificOptions) {
 	});
 
 	if (process.env.TRAVIS) {
-
+        config.browsers = ['Chrome_travis_ci'];
 		// Karma (with socket.io 1.x) buffers by 50 and 50 tests can take a long time on IEs;-)
 		config.browserNoActivityTimeout = 120000;
 	}

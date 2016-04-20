@@ -1,5 +1,6 @@
 language: node_js
-sudo: false
+sudo: required
+dist: trusty
 node_js:
   - 'stable'
 env:
@@ -13,7 +14,16 @@ addons:
 cache:
   directories:
     - node_modules
-
+addons:
+  # From some tests it seems you can only have one firefox addon.
+  # Adding two results in the last one defined being the one installed.
+  firefox: latest
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+      - google-chrome-beta
 before_install:
   - "nvm use $TRAVIS_NODE_VERSION"
 
@@ -27,7 +37,9 @@ install:
   - npm config set loglevel http
   # Install npm dependencies and ensure that npm cache is not stale
   - npm install
-
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 notifications:
   email: true
 

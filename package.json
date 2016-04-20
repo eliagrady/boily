@@ -1,6 +1,6 @@
 {
   "name": "boily",
-  "version": "4.0.4",
+  "version": "4.0.5",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
@@ -29,7 +29,6 @@
     "lint:gulp": "gulp lint:gulp",
     "watch:server": "gulp watch:server",
     "watch:browser": "karma start config/karma.conf.js --auto-watch --no-single-run",
-    "watch:phantom": "gulp watch:phantom",
     "watch:chrome": "./node_modules/.bin/karma start config/karma.conf.js --browsers=Chrome --auto-watch  --no-single-run",
     "watch:firefox": "./node_modules/.bin/karma start config/karma.conf.js --browsers=Firefox --auto-watch  --no-single-run",
     "watch:phantom": "./node_modules/.bin/karma start config/karma.conf.js --browsers=PhantomJS --auto-watch  --no-single-run",
