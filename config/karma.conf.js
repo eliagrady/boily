@@ -67,7 +67,7 @@ module.exports = function(config, specificOptions) {
 			divider: ''
 		},
 
-		browsers: ['PhantomJS'],
+		browsers: ['Chrome'],
 		browserDisconnectTimeout: 10000,
 		browserDisconnectTolerance: 2,
 
@@ -97,12 +97,5 @@ module.exports = function(config, specificOptions) {
 
 		// Karma (with socket.io 1.x) buffers by 50 and 50 tests can take a long time on IEs;-)
 		config.browserNoActivityTimeout = 120000;
-
-		if (process.env.BROWSER_PROVIDER === 'saucelabs' || !process.env.BROWSER_PROVIDER) {
-			// Allocating a browser can take pretty long (eg. if we are out of capacity and need to wait
-			// for another build to finish) and so the `captureTimeout` typically kills
-			// an in-queue-pending request, which makes no sense.
-			config.captureTimeout = 0;
-		}
 	}
 };

@@ -1,3 +1,12 @@
+# v.4.0.2
+
+- fixed issue where JSDOM didn't work for server tests
+- server tests now runs from package.json. No gulp
+- `coverage` changed to `server:cov`
+- made babel support nodeJS 5.x 100%
+- added new babel 2015 preset
+- minor tweaks
+
 # v.3.2.7
 
 - simplified Travis

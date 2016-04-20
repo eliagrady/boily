@@ -1,13 +1,12 @@
 {
   "name": "boily",
-  "version": "4.0.0",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
     "clean": "rimraf coverage/ dist/",
     "clean:coverage": "rimraf coverage/",
     "test": "npm run test:browser && npm run test:server && npm run coverage",
-    "test:server": "gulp test:server",
+    "test:server": "mocha --recursive --bail --check-leaks --opts config/mocha.opts",
     "test:browser": "karma start config/karma.conf.js --no-auto-watch",
     "browser": "gulp browser",
     "watch": "gulp watch",
