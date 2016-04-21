@@ -4,9 +4,7 @@ dist: trusty
 node_js:
   - 'stable'
   - '6.0.0-rc3'
-  
-env:
-  - CXX=g++-4.8
+
 addons:
   apt:
     sources:
@@ -24,7 +22,10 @@ addons:
       - google-chrome-stable
       - google-chrome-beta
 env:
-  - NPM_VERSION=3
+ - CXX=g++-4.8
+ - NPM_VERSION=3
+ - TRAVIS_NODE_VERSION="5"
+ - TRAVIS_NODE_VERSION="6"
 before_install:
   - "nvm use $TRAVIS_NODE_VERSION"
 
