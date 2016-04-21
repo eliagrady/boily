@@ -1,7 +1,7 @@
 ./specs/**/*spec.browser.js
 ./specs/**/*spec.server.js
 
---require ./config/dom.js
+--require ./config/setup/dom.js
 --reporter spec
 --ui bdd
 --compilers js:babel-core/register
