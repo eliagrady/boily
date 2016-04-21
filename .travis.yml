@@ -28,7 +28,7 @@ env:
  - g++-4.8
  - NPM_VERSION=3
  - TRAVIS_NODE_VERSION="5"
- - TRAVIS_NODE_VERSION="6"
+ #- TRAVIS_NODE_VERSION="6"
 before_install:
   - "nvm use $TRAVIS_NODE_VERSION"
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
