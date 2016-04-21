@@ -3,6 +3,8 @@ sudo: required
 dist: trusty
 node_js:
   - 'stable'
+  - '6.0.0-rc3'
+  
 env:
   - CXX=g++-4.8
 addons:
@@ -21,6 +23,8 @@ addons:
     packages:
       - google-chrome-stable
       - google-chrome-beta
+env:
+  - NPM_VERSION=3
 before_install:
   - "nvm use $TRAVIS_NODE_VERSION"
 
@@ -30,6 +34,7 @@ install:
   # - npm config set registry http://23.251.144.68
   # Disable the spinner, it looks bad on Travis
   - npm config set spin false
+  - sudo apt-get update -qq
   # Log HTTP requests
   - npm config set loglevel http
   # Install npm dependencies and ensure that npm cache is not stale

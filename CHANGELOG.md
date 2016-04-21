@@ -1,3 +1,9 @@
+# v.4.0.7
+
+- Travis.yml changed to use the newest Chrome browser by default due to issues ES2015 support in PhantomJS
+- Karma changed to use Chrome browser by default due to issues ES2015 support in PhantomJS
+
+
 # v.4.0.2
 
 - fixed issue where JSDOM didn't work for server tests
