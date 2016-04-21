@@ -1,6 +1,3 @@
-os:
-  - linux
-  - osx
 language: node_js
 sudo: required
 dist: trusty
@@ -33,7 +30,7 @@ install:
   # - npm config set registry http://23.251.144.68
   # Disable the spinner, it looks bad on Travis
   - npm config set spin false
-  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then sudo apt-get update -qq
+  - sudo apt-get update -qq
   # Log HTTP requests
   - npm config set loglevel http
   # Install npm dependencies and ensure that npm cache is not stale
@@ -52,4 +49,3 @@ after_script:
 # Upload to coveralls, but don't _fail_ if coveralls is down.
   - cat coverage/lcov.info | node_modules/.bin/coveralls || echo "Coveralls upload failed"
   - node node_modules/lcov-filter/index.js lcov.info config | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
-
