@@ -1,3 +1,9 @@
+# v.4.1.0
+
+- refactored Karma
+-fixed a few issues with Travis.yml
+- updated dependencies
+
 # v.4.0.7
 
 - Travis.yml changed to use the newest Chrome browser by default due to issues ES2015 support in PhantomJS

@@ -1,6 +1,6 @@
 // Karma configuration
 module.exports = function(config, specificOptions) {
-	config.set({
+    const configuration = {
 
 		// base path that will be used to resolve all patterns (eg. files, exclude)
 		basePath: '',
@@ -17,7 +17,7 @@ module.exports = function(config, specificOptions) {
 		// list of files / patterns to load in the browser
 		files: [
 			'../specs/**/*spec.browser.js',
-			'../specs/**/*spec.server.js',
+			'../specs/**/*spec.server.js'
 		],
 		// list of files to exclude
 		exclude: [],
@@ -69,7 +69,7 @@ module.exports = function(config, specificOptions) {
 
 		browsers: ['Chrome'],
         customLaunchers: {
-            Chrome_travis_ci: {
+            ChromeTravisCI: {
                 base: 'Chrome',
                 flags: ['--no-sandbox']
             }
@@ -97,11 +97,13 @@ module.exports = function(config, specificOptions) {
 		// Continuous Integration mode
 		// if true, Karma captures browsers, runs the tests and exits
 		singleRun: true
-	});
+	};
 
 	if (process.env.TRAVIS) {
-        config.browsers = ['Chrome_travis_ci'];
+        configuration.browsers = ['ChromeTravisCI'];
 		// Karma (with socket.io 1.x) buffers by 50 and 50 tests can take a long time on IEs;-)
-		config.browserNoActivityTimeout = 120000;
+        configuration.browserNoActivityTimeout = 120000;
 	}
+
+    config.set(configuration);
 };
