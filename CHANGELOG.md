@@ -1,8 +1,9 @@
 # v.4.0.7
 
 - Travis.yml changed to use the newest Chrome browser by default due to issues ES2015 support in PhantomJS
+- Travis now tests on Multiple Operating Systems
 - Karma changed to use Chrome browser by default due to issues ES2015 support in PhantomJS
-
+- Made boily NodeJS 6.0 ready
 
 # v.4.0.2
 
