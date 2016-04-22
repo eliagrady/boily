@@ -50,6 +50,7 @@ $ npm run build                 # Build a minified and a non-minified version of
 * `npm run lint:source` - Lint the source
 * `npm run lint:tests` - Lint the unit tests
 * `npm run lint:gulp` - Lint the gulp file
+* `npm run lint:all` - Lint everything. Source files, test and the gulp file
 * `npm run clean` - Remove the coverage report - and the *dist* folder
 * `npm run server:cov` - Run Isparta, a code coverage tool
 * `npm run test` - Runs unit tests for both server and the browser
@@ -82,6 +83,8 @@ To run unit tests only for the browser ( *client*), or for the server, create ei
 To run the tests in the project, just simply `npm run test` for both server and client unit tests, or `npm run test:server`. for server or `npm run test:browser`. for browser tests.
 
 To keep watching the common test suites that you are working on, simply do `npm run watch:browser` or `npm run watch:server`.
+
+**Note!** By default all server tests are run with JSDOM
 
 ### Adding other test files
 
@@ -118,7 +121,7 @@ This library is set up to integrate with Coveralls, and will automaticly publish
 
 ##Rollup
 
-Rollup are used as the library bundler. It produces a cleaner and more lightweight source code then what you get with for example webpack and browserify.
+Rollup are used as the library bundler. It bundle down to a cleaner and more lightweight bundle then what you get with for example Webpack and Browserify.
 
 ## Package management
 
@@ -154,7 +157,8 @@ npm install
 
 ## Known issues
 
-- There are know issues with sourcemaps and Karma where all coverage tools are report wrong line numbers and code coverage.  
+- PhantomJS has it's limitation, and doesn't support ES2015 100%. Workaround is too use alternative Karma launcher. E.g. Chrome or Firefox.
+- JSDOM have issues with various things that work by default in native DOM. E.g. event listeners get invoked when they shouldn't, and boolean attributes not after the DOM specs.
 
 ## Q&A
 

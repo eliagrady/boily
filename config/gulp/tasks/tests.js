@@ -6,22 +6,24 @@ import { mochaGlobals } from '../config';
 
 const karmaConfig = path.resolve('config/karma.conf.js');
 
-function startKarma(browser, factory) {
+function startKarma(browser, fn) {
 	new Server({
 		configFile: karmaConfig,
 		singleRun: true,
 		browsers: [browser]
-	}, factory).start();
+	}, fn).start();
 }
 
 // Run all unit tests for server
 gulp.task('test:server', () => {
 	require('babel-register');
-	return gulp.src(['config/setup/node.js', './specs/**/*spec.server.js'], {
+	return gulp.src(['config/setup/node.js', './specs/**/*spec.browser.js', './specs/**/*spec.server.js'], {
 			read: false
 		})
+        // same settings as mocha.opts in the CI, and used inside package.json
 		.pipe(mocha({
 			reporter: 'spec',
+            compilers: 'js:babel-core/register',
 			ui: 'bdd',
 			timeout: 15000,
 			globals: Object.keys(mochaGlobals),
