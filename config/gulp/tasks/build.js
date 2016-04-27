@@ -36,7 +36,7 @@ function clean() {
 function bundle(format) {
 	return rollup({
 		entry: path.resolve('src/index.js'),
-		sourceMap: true,
+		sourceMap: false,
 		banner: copyright,
 		plugins: [
 			env.min === 'true' ? uglify({
