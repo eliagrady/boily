@@ -9,7 +9,6 @@ import buffer from 'vinyl-buffer';
 import filesize from 'rollup-plugin-filesize';
 import typescript from 'rollup-plugin-typescript';
 import stub from 'rollup-plugin-stub';
-import eslint from 'rollup-plugin-eslint';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import replace from 'gulp-replace';
 import sourcemaps from 'gulp-sourcemaps';
@@ -66,7 +65,6 @@ function bundle(format) {
 					'transform-inline-environment-variables'
 				] : []
 			}),
-			eslint(), // add your own Eslint configuration here
 			nodeResolve({
 				jsnext: true,
 				main: true

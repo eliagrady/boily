@@ -1,6 +1,6 @@
 {
   "name": "boily",
-  "version": "4.1.6",
+  "version": "4.1.7",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
@@ -146,7 +146,6 @@
     "rollup-plugin-replace": "^1.1.0",
     "rollup-plugin-uglify": "^0.3.1",
     "rollup-plugin-filesize": "^0.3.4",
-    "rollup-plugin-eslint": "^2.0.0",
     "rollup-plugin-typescript": "^0.7.5",
     "rollup-plugin-stub": "^1.1.0",
     "rollup-stream": "^1.4.1",
