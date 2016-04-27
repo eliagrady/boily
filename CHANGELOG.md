@@ -1,7 +1,13 @@
+# v.4.1.6
+
+- added support for nodeJS 6
+- fixed issues with Travis.yml
+- updated dependencies
+
 # v.4.1.0
 
 - refactored Karma
--fixed a few issues with Travis.yml
+- fixed a few issues with Travis.yml
 - updated dependencies
 
 # v.4.0.7
