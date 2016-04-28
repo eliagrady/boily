@@ -1,3 +1,7 @@
+# v.4.2.1
+
+- add back "normal" Babel 2015 preset, and fixed issue with nodeJS 6
+
 # v.4.1.6
 
 - added support for nodeJS 6
