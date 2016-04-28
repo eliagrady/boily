@@ -1,6 +1,6 @@
 {
   "name": "boily",
-  "version": "4.1.7",
+  "version": "4.1.8",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
@@ -159,7 +159,7 @@
     "npm-check-updates": "^2.6.3",
     "cross-env": "1.0.7",
     "lolex": "^1.4.0",
-    "jsdom": "^8.4.0"
+    "jsdom": "^8.4.1"
   },
   "pre-commit": [
     "test",
