@@ -1,3 +1,62 @@
+# v.4.2.1
+
+- add back "normal" Babel 2015 preset, and fixed issue with nodeJS 6
+
+# v.4.1.6
+
+- added support for nodeJS 6
+- fixed issues with Travis.yml
+- updated dependencies
+
+# v.4.1.0
+
+- refactored Karma
+- fixed a few issues with Travis.yml
+- updated dependencies
+
+# v.4.0.7
+
+- Travis.yml changed to use the newest Chrome browser by default due to issues ES2015 support in PhantomJS
+- Travis now tests on Multiple Operating Systems
+- Karma changed to use Chrome browser by default due to issues ES2015 support in PhantomJS
+- Made boily NodeJS 6.0 ready
+
+# v.4.0.2
+
+- fixed issue where JSDOM didn't work for server tests
+- server tests now runs from package.json. No gulp
+- `coverage` changed to `server:cov`
+- made babel support nodeJS 5.x 100%
+- added new babel 2015 preset
+- minor tweaks
+
+# v.3.2.7
+
+- simplified Travis
+
+# v.3.2.4
+- refactored jsdom configuration
+- updated dependencies
+
+# v.3.2.0
+
+- Fixed a issue where jsDOM failed for React
+- updated readme
+
+# v.3.1.9
+
+- Removed fixture support. Kept only jsDom
+
+# v.3.1.8
+
+- Fixed fixture issues
+
+# v.3.1.7
+
+- Fixed an issue where coverage wouldn't work on client side
+- added jsdom support
+- added fixtures. The fixtures can be used like this `this.setFixtures('<div></div>');` inside `beforeEach()`. They got teared down automatically
+
 # v.3.1.5
 
 - refactored some of the gulp tasks

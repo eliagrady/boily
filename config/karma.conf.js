@@ -1,6 +1,6 @@
 // Karma configuration
 module.exports = function(config, specificOptions) {
-	config.set({
+    const configuration = {
 
 		// base path that will be used to resolve all patterns (eg. files, exclude)
 		basePath: '',
@@ -17,7 +17,7 @@ module.exports = function(config, specificOptions) {
 		// list of files / patterns to load in the browser
 		files: [
 			'../specs/**/*spec.browser.js',
-			'../specs/**/*spec.server.js',
+			'../specs/**/*spec.server.js'
 		],
 		// list of files to exclude
 		exclude: [],
@@ -67,7 +67,13 @@ module.exports = function(config, specificOptions) {
 			divider: ''
 		},
 
-		browsers: ['PhantomJS'],
+		browsers: ['Chrome'],
+        customLaunchers: {
+            ChromeTravisCI: {
+                base: 'Chrome',
+                flags: ['--no-sandbox']
+            }
+        },
 		browserDisconnectTimeout: 10000,
 		browserDisconnectTolerance: 2,
 
@@ -91,18 +97,13 @@ module.exports = function(config, specificOptions) {
 		// Continuous Integration mode
 		// if true, Karma captures browsers, runs the tests and exits
 		singleRun: true
-	});
+	};
 
 	if (process.env.TRAVIS) {
-
+        configuration.browsers = ['ChromeTravisCI'];
 		// Karma (with socket.io 1.x) buffers by 50 and 50 tests can take a long time on IEs;-)
-		config.browserNoActivityTimeout = 120000;
-
-		if (process.env.BROWSER_PROVIDER === 'saucelabs' || !process.env.BROWSER_PROVIDER) {
-			// Allocating a browser can take pretty long (eg. if we are out of capacity and need to wait
-			// for another build to finish) and so the `captureTimeout` typically kills
-			// an in-queue-pending request, which makes no sense.
-			config.captureTimeout = 0;
-		}
+        configuration.browserNoActivityTimeout = 120000;
 	}
+
+    config.set(configuration);
 };

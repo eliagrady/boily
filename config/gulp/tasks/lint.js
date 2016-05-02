@@ -13,10 +13,10 @@ function lint(files) {
 gulp.task('lint:src', () => lint('src/**/*.js'));
 
 // Lint our test code
-gulp.task('lint:test', () => lint('src/**/*__tests__*/**/*.js'));
+gulp.task('lint:tests', () => lint('specs/**/*.js'));
 
 // Lint this file
 gulp.task('lint:gulp', () => lint('gulpfile.babel.js'));
 
 // Lint everything
-gulp.task('lint', ['lint:src', 'lint:test']);
+gulp.task('lint:all', ['lint:src', 'lint:tests', 'lint:gulp']);

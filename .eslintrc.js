@@ -20,18 +20,17 @@ module.exports = {
 	},
 	'ecmaFeatures': {
 		'jsx': true,
-		'modules': true,
-		'es6': true
+		'modules': true
 	},
 	'env': {
-		'browser': true,
 		'es6': true,
+		'browser': true,
 		'mocha': true,
 		'node': true
 	},
-
-	// We're stricter than the default config, mostly. We'll override a few rules
-	// and then enable some React specific ones.
+	// prevent eslint from taking user's eslint config files that are higher
+	// in the directory structure into consideration.
+	root:true,
 	rules: {
 		'accessor-pairs': OFF,
 		'brace-style': [ERROR, '1tbs'],
@@ -40,9 +39,7 @@ module.exports = {
 		'dot-location': [ERROR, 'property'],
 		'dot-notation': ERROR,
 		'eqeqeq': [ERROR, 'allow-null'],
-		"indent": [2, "tab", {
-			"SwitchCase": 1
-		}],
+		'indent': [ERROR, 'tab', { 'SwitchCase': 1	}],
 		'jsx-quotes': [ERROR, 'prefer-double'],
 		'no-cond-assign': [ERROR, 'except-parens'],
 		'no-console': 0,
@@ -50,6 +47,7 @@ module.exports = {
 		'no-debugger': WARNING,
 		'no-bitwise': OFF,
 		'no-multi-spaces': ERROR,
+		'no-mixed-spaces-and-tabs': [ ERROR, 'smart-tabs' ],
 		'no-restricted-syntax': [ERROR, 'WithStatement'],
 		'no-shadow': ERROR,
 		'no-unused-vars': [ERROR, {args: 'none'}],
@@ -72,21 +70,15 @@ module.exports = {
 		'no-eval': ERROR,
 		'no-return-assign': ERROR,
 		'quotes': [ERROR, 'single', 'avoid-escape'],
-		'semi-spacing': [ERROR, {
-			'after': true
-		}],
+		'semi-spacing': [ERROR, { 'after': true }],
 		'semi': [ERROR, 'always'],
 		'space-before-blocks': ERROR,
 		'space-before-function-paren': [ERROR, {anonymous: 'never', named: 'never'}],
 		'strict': [ERROR, 'global'],
 		'keyword-spacing': ERROR,
 		'space-infix-ops': ERROR,
-		'space-unary-ops': [ERROR, {
-			'words': true
-		}],
-		'spaced-comment': [ERROR, 'always', {
-			'exceptions': ['*']
-		}],
+		'space-unary-ops': [ERROR, { 'words': true 	}],
+		'spaced-comment': [ERROR, 'always', { 'exceptions': ['*'] }],
 		'wrap-regex': ERROR,
 		'constructor-super': ERROR,
 		'no-class-assign': ERROR,

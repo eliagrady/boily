@@ -7,12 +7,13 @@ import { Instrumenter } from 'isparta';
 import { mochaGlobals } from '../config';
 
 // Set up coverage and run tests
-gulp.task('coverage', (done) => {
+gulp.task('server:cov', (done) => {
 		require('babel-register');
 		gulp.src(['./src/**/*.js'])
 			.pipe(istanbul({
 				exclude: /node_modules|specs|dist/,
-				instrumenter: Instrumenter
+				instrumenter: Instrumenter,
+                includeUntested: true
 			}))
 			.pipe(istanbul.hookRequire())
 			.pipe(coveralls())

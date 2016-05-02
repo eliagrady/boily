@@ -1,5 +1,5 @@
 /*!
- * boily v3.1.5
+ * boily v4.2.2
  * (c) 2016 KFlash
  * Released under the MIT License.
  */
@@ -22,5 +22,4 @@
 	return boily;
 
 }));
-
 //# sourceMappingURL=boily.js.map

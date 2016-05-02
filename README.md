@@ -4,6 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/Kflash/boily/badge.svg?branch=master)](https://coveralls.io/github/Kflash/boily?branch=master)
 [![npm version](https://badge.fury.io/js/boily.svg)](https://badge.fury.io/js/boily)
 [![npm](https://img.shields.io/npm/l/express.svg?style=flat-square)](https://github.com/kflash/boily/blob/master/LICENSE.md)
+[![npm downloads](https://img.shields.io/npm/dm/boily.svg)](https://www.npmjs.org/package/boily)
 
 ## Features
 
@@ -49,8 +50,9 @@ $ npm run build                 # Build a minified and a non-minified version of
 * `npm run lint:source` - Lint the source
 * `npm run lint:tests` - Lint the unit tests
 * `npm run lint:gulp` - Lint the gulp file
+* `npm run lint:all` - Lint everything. Source files, test and the gulp file
 * `npm run clean` - Remove the coverage report - and the *dist* folder
-* `npm run coverage` - Run Isparta, a code coverage tool
+* `npm run server:cov` - Run Isparta, a code coverage tool
 * `npm run test` - Runs unit tests for both server and the browser
 * `npm run test:browser` - Runs the unit tests for browser
 * `npm run test:server` - Runs the unit tests on the server
@@ -64,10 +66,10 @@ $ npm run build                 # Build a minified and a non-minified version of
 * `npm run watch:firefox` - Run all unit tests for browser with Firefox & watch files for changes
 * `npm run watch:phantom` - Run all unit tests for browser with PhantomJS & watch files for changes
 * `npm run packages` - List installed packages
-* `npm run package:purge` - Remove all dependencies
-* `npm run package:reinstall` - Reinstall all dependencies
-* `npm run package:check` - shows a list over dependencies with a higher version number then the current one - if any
-* `npm run package:upgrade` - Automaticly upgrade all devDependencies & dependencies, and update package.json
+* `npm run packages:purge` - Remove all dependencies
+* `npm run packages:reinstall` - Reinstall all dependencies
+* `npm run packages:check` - shows a list over dependencies with a higher version number then the current one - if any
+* `npm run packages:upgrade` - Automaticly upgrade all devDependencies & dependencies, and update package.json
 * `npm run browser` - runs browser unit tests in the browser. All of your unit tests get bundled automatically.
 
 ## Testing environment
@@ -81,6 +83,8 @@ To run unit tests only for the browser ( *client*), or for the server, create ei
 To run the tests in the project, just simply `npm run test` for both server and client unit tests, or `npm run test:server`. for server or `npm run test:browser`. for browser tests.
 
 To keep watching the common test suites that you are working on, simply do `npm run watch:browser` or `npm run watch:server`.
+
+**Note!** By default all server tests are run with JSDOM
 
 ### Adding other test files
 
@@ -117,7 +121,7 @@ This library is set up to integrate with Coveralls, and will automaticly publish
 
 ##Rollup
 
-Rollup are used as the library bundler. It produces a cleaner and more lightweight source code then what you get with for example webpack and browserify.
+Rollup are used as the library bundler. It bundle down to a cleaner and more lightweight bundle then what you get with for example Webpack and Browserify.
 
 ## Package management
 
@@ -135,6 +139,10 @@ To reinstall all packages, do `npm run package:reinstall`, and to remove all pac
 
 This boilerplate uses a [pre-commit hook](https://www.npmjs.com/package/pre-commit) to ensure that your npm test (or other specified scripts) passes before you can commit your changes. This all conveniently configured in your package.json.
 
+## jsDOM
+
+[jsdom](https://github.com/tmpvar/jsdom) are used to set up React.js components' testing harness under Node.js, based on the amazing jsdom. Also [a couple of bugs](https://github.com/facebook/react/issues/5046) related to React is fixed.
+
 ## Linting
 
 ESLint are used to lint your source. To change the rules, edit the .eslintrc file in the root directory, respectively.
@@ -149,13 +157,15 @@ npm install
 
 ## Known issues
 
-- Sourcemaps are not working for Karma tests, and the coverage reports outputs wrong info. This is not an issue with Boily.  
+- PhantomJS has it's limitation, and doesn't support ES2015 100%. Workaround is too use alternative Karma launcher. E.g. Chrome or Firefox.
+- JSDOM have issues with various things that work by default in native DOM. E.g. event listeners get invoked when they shouldn't, and boolean attributes not after the DOM specs.
 
 ## Q&A
 
 #### Why isn't rollup used as a preprocessor for Karma?
 
-Simply because Rollup doesn't support rewire. An there is no benefit in using it over Webpack. It could have solved an issue with Webpack and Karma, but the Istanbul plugin for rollup sucks big time. It's not a issue with the plugin itself.
+Simply because Rollup doesn't support rewire. And there is no benefit in using it over Webpack. It could have solved an issue with Webpack and Karma, but the Istanbul 
+plugin for rollup sucks big time. It's not a issue with the plugin itself.
 
 #### Why use Gulp?
 
@@ -169,7 +179,7 @@ Yes. Everything works the same.
 commonJS, ES6, UMD, and all other know formats.
 
 #### Is Google Closure supported?
-Yes.
+Yes. You can't compile it, but you can bundle your code to output a non-minified Google closure script.
 
 
 # License

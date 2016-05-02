@@ -1,52 +1,52 @@
 language: node_js
-sudo: false
+sudo: required
+dist: trusty
 node_js:
   - 'stable'
+  - '6'
 
 cache:
   directories:
     - node_modules
-     - $HOME/.chrome/chromium
-
-
-before_install:
-  - "nvm use $TRAVIS_NODE_VERSION"
-
-env:
- global:
-    # Use newer verison of GCC to that is required to compile native npm modules for Node v4+ on Ubuntu Precise
-    # more info: https://docs.travis-ci.com/user/languages/javascript-with-nodejs#Node.js-v4-(or-io.js-v3)-compiler-requirements
-    - CXX=g++-4.8
-   # No sandbox mode is needed for Chromium in Travis, it crashes otherwise: https://sites.google.com/a/chromium.org/chromedriver/help/chrome-doesn-t-start
-    - KARMA_JS_BROWSERS=ChromeNoSandbox
-
-
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
+      - google-chrome
     packages:
-      - g++-4.8
-
+      - google-chrome-stable
+      - google-chrome-beta
+env:
+ - CXX=g++-4.8
+ - g++-4.8
+ - NPM_VERSION=3
+ - TRAVIS_NODE_VERSION="5"
+ - TRAVIS_NODE_VERSION="6"
+before_install:
+  - "nvm use $TRAVIS_NODE_VERSION"
 
 install:
   # Install version of npm that we are locked against
-  - npm install -g npm@3.5.3
+  - npm install -g npm@3
   # - npm config set registry http://23.251.144.68
   # Disable the spinner, it looks bad on Travis
   - npm config set spin false
-  - npm --version
+  - sudo apt-get update -qq
   # Log HTTP requests
   - npm config set loglevel http
   # Install npm dependencies and ensure that npm cache is not stale
   - npm install
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then export CXX=g++-4.8; fi
 
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 notifications:
   email: true
+
 script:
-  - gulp coverage
+  - gulp server:cov
 after_script:
 # Upload to coveralls, but don't _fail_ if coveralls is down.
   - cat coverage/lcov.info | node_modules/.bin/coveralls || echo "Coveralls upload failed"
   - node node_modules/lcov-filter/index.js lcov.info config | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
-
