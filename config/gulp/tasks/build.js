@@ -10,6 +10,7 @@ import filesize from 'rollup-plugin-filesize';
 import typescript from 'rollup-plugin-typescript';
 import stub from 'rollup-plugin-stub';
 import nodeResolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
 import replace from 'gulp-replace';
 import sourcemaps from 'gulp-sourcemaps';
 import pack from '../../../package.json';
@@ -69,6 +70,7 @@ function bundle(format) {
 				jsnext: true,
 				main: true
 			}),
+			commonjs(),
 			stub(),
 			typescript(),
 			filesize(),

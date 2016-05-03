@@ -69,7 +69,7 @@ $ npm run build                 # Build a minified and a non-minified version of
 * `npm run packages:purge` - Remove all dependencies
 * `npm run packages:reinstall` - Reinstall all dependencies
 * `npm run packages:check` - shows a list over dependencies with a higher version number then the current one - if any
-* `npm run packages:upgrade` - Automaticly upgrade all devDependencies & dependencies, and update package.json
+* `npm run packages:upgrade` - Automatically upgrade all devDependencies & dependencies, and update package.json
 * `npm run browser` - runs browser unit tests in the browser. All of your unit tests get bundled automatically.
 
 ## Testing environment
@@ -117,7 +117,7 @@ Examples and tests are included.
 
 ## Coveralls
 
-This library is set up to integrate with Coveralls, and will automaticly publish your coverage report to **coveralls.io** if you have created an account there.
+This library is set up to integrate with Coveralls, and will automatically publish your coverage report to **coveralls.io** if you have created an account there.
 
 ##Rollup
 
