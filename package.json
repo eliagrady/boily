@@ -1,6 +1,6 @@
 {
   "name": "boily",
-  "version": "4.2.5",
+  "version": "4.2.6",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
@@ -140,11 +140,11 @@
     "lolex": "^1.4.0",
     "mkdirp": "^0.5.1",
     "mocha": "^2.4.5",
-    "npm-check-updates": "^2.6.3",
+    "npm-check-updates": "^2.6.4",
     "phantomjs-prebuilt": "^2.1.7",
     "pre-commit": "^1.1.2",
     "rimraf": "^2.5.2",
-    "rollup": "^0.26.1",
+    "rollup": "^0.26.2",
     "rollup-plugin-babel": "^2.4.0",
     "rollup-plugin-commonjs": "^2.2.1",
     "rollup-plugin-filesize": "^0.3.4",
