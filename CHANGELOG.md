@@ -1,3 +1,9 @@
+# v.4.2.6
+
+- Added rollup-plugin-commonjs support in order to support statements such as:
+  `import { render } from 'react-dom'` - Credit: [eliagrady](https://github.com/eliagrady)
+- updated dependencies
+
 # v.4.2.1
 
 - add back "normal" Babel 2015 preset, and fixed issue with nodeJS 6
