@@ -1,6 +1,6 @@
 {
   "name": "boily",
-  "version": "4.2.8",
+  "version": "4.3.1",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
@@ -153,7 +153,6 @@
     "rollup-plugin-stub": "^1.1.0",
     "rollup-plugin-typescript": "^0.7.5",
     "rollup-plugin-uglify": "^0.3.1",
-    "rollup-stream": "^1.4.1",
     "sinon": "^1.17.4",
     "sinon-chai": "^2.8.0",
     "vinyl-buffer": "^1.0.0",
