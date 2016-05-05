@@ -1,6 +1,6 @@
 {
   "name": "boily",
-  "version": "4.3.2",
+  "version": "4.3.4",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
@@ -129,10 +129,10 @@
     "karma-firefox-launcher": "^1.0.0",
     "karma-ie-launcher": "^1.0.0",
     "karma-mocha": "^1.0.1",
-    "karma-mocha-reporter": "^2.0.2",
+    "karma-mocha-reporter": "^2.0.3",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-rollup-preprocessor": "^2.0.1",
-    "karma-sinon": "^1.0.4",
+    "karma-sinon": "^1.0.5",
     "karma-sinon-chai": "^1.2.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.26",
