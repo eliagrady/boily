@@ -1,6 +1,6 @@
 {
   "name": "boily",
-  "version": "4.3.4",
+  "version": "4.3.5",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
@@ -83,7 +83,7 @@
     "babel-core": "^6.8.0",
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
-    "babel-plugin-rewire": "^1.0.0-rc-2",
+    "babel-plugin-rewire": "^1.0.0-rc-3",
     "babel-plugin-syntax-flow": "^6.8.0",
     "babel-plugin-syntax-jsx": "^6.8.0",
     "babel-plugin-syntax-object-rest-spread": "^6.8.0",
@@ -157,7 +157,7 @@
     "sinon-chai": "^2.8.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "webpack": "^2.1.0-beta.6",
+    "webpack": "^2.1.0-beta.7",
     "webpack-stream": "^3.2.0"
   },
   "pre-commit": [
