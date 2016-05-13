@@ -131,7 +131,7 @@
     "karma-mocha": "^1.0.1",
     "karma-mocha-reporter": "^2.0.3",
     "karma-phantomjs-launcher": "^1.0.0",
-    "karma-rollup-preprocessor": "^2.0.1",
+    "karma-rollup-preprocessor": "^2.0.2",
     "karma-sinon": "^1.0.5",
     "karma-sinon-chai": "^1.2.0",
     "karma-sourcemap-loader": "^0.3.7",
