@@ -63,7 +63,8 @@ function bundle(format) {
 					'transform-remove-debugger',
 					'transform-remove-console',
 					'transform-undefined-to-void',
-					'transform-inline-environment-variables'
+					'transform-inline-environment-variables',
+
 				] : []
 			}),
 			nodeResolve({
