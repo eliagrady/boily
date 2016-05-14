@@ -1,6 +1,6 @@
 {
   "name": "boily",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
@@ -102,7 +102,7 @@
     "chai-as-promised": "^5.3.0",
     "cross-env": "1.0.7",
     "del": "^2.2.0",
-    "eslint": "^2.9.0",
+    "eslint": "^2.10.0",
     "glob": "^7.0.3",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
