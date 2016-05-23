@@ -1,6 +1,6 @@
 {
   "name": "boily",
-  "version": "5.0.19",
+  "version": "5.1.0",
   "description": "ES2015 boilerplate for creating libraries with the newest front-end technologies.",
   "main": "dist/boily.js",
   "scripts": {
@@ -139,7 +139,7 @@
     "karma-webpack": "^1.7.0",
     "lolex": "^1.5.0",
     "mkdirp": "^0.5.1",
-    "mocha": "^2.4.5",
+    "mocha": "^2.5.1",
     "npm-check-updates": "^2.6.5",
     "phantomjs-prebuilt": "^2.1.7",
     "pre-commit": "^1.1.3",
