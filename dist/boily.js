@@ -1,5 +1,5 @@
 /*!
- * boily v5.1.0
+ * boily v5.1.1
  * (c) 2016 KFlash
  * Released under the MIT License.
  */
